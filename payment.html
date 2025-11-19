@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!-- GTM -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-KHPTRH75');</script>
+
+<!-- GTAG -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RWTSB1LS3E"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-RWTSB1LS3E', { 'debug_mode': true });
+</script>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Payment - ShivNanadi Dairy Farm</title>
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<h1>Payment Page</h1>
+
+<form class="payment-form">
+    <label>Name:</label>
+    <input type="text" required>
+
+    <label>Address:</label>
+    <input type="text" required>
+
+    <label>UPI / Card Number:</label>
+    <input type="text" required>
+
+    <button type="submit" onclick="event.preventDefault(); location.href='thankyou.html'">
+        Pay Now
+    </button>
+</form>
+
+<br>
+<button onclick="location.href='product.html'">Back to Products</button>
+
+</body>
+</html>
