@@ -1,69 +1,92 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Best Places - Explore Karnataka</title>
-<style>
-body{margin:0;font-family:Arial;background:#f8f8ff;}
-header{background:#3b1e54;color:white;padding:20px;text-align:center;}
-nav{display:flex;justify-content:center;gap:20px;margin-top:10px;}
-nav a{color:white;text-decoration:none;font-weight:bold;}
-.section{padding:40px;text-align:center;}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px;padding:20px;}
-.place-card{background:white;padding:15px;border-radius:10px;box-shadow:0 0 10px #ccc;}
-.place-card img{width:100%;height:180px;border-radius:10px;object-fit:cover;}
-.btn{padding:10px 15px;background:#3b1e54;color:white;text-decoration:none;border-radius:5px;}
-.btn:hover{background:#532f7d;}
-footer{padding:20px;background:#222;color:white;text-align:center;margin-top:40px;}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tour Packages - Explore Karnataka</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <style>
+        body {margin:0; font-family:'Segoe UI', Arial, sans-serif; background:#eaf6f7;}
+        header {background:linear-gradient(90deg, #2388ff, #34d1bf); padding:1.5rem;text-align:center;}
+        header h2 {color:#fff; font-size:2.5rem;}
+        header p {color:#f4fafc;}
+        .package-list {display:flex; flex-wrap:wrap; gap:2rem; justify-content:center;margin:2rem;}
+        .package-card {background:#fff; border-radius:12px; box-shadow:0 4px 24px rgba(0,0,0,0.12); width:330px; padding:1.5rem; transition:.2s;}
+        .package-card:hover {transform:scale(1.04);}
+        .package-card img {width:100%; border-radius:10px; animation:zoomIn 2s;}
+        .package-card h3 {color:#34d1bf;}
+        .package-card ul {padding:0 0 0 1.2rem;}
+        .book-btn {background:linear-gradient(90deg,#2388ff,#34d1bf); color:#fff; border:none; font-size:1rem; padding:0.7rem 2rem; border-radius:8px; cursor:pointer; margin-top:1rem; font-weight:bold;}
+        .book-btn:hover {background:#34d1bf;}
+        @media (max-width:900px) {.package-list {flex-direction:column; align-items:center;}}
+        @keyframes zoomIn {0% {transform: scale(.92);} 50% {transform: scale(1.02);} 100% {transform: scale(1);}}
+        footer {background:#2388ff; color:#fff; text-align:center; padding:1rem;}
+    </style>
 </head>
 <body>
-
-<header>
-<h1>Best Tourist Places in Karnataka</h1>
-<nav>
-<a href="index.html">Home</a>
-<a href="places.html">Best Places</a>
-<a href="packages.html">Packages</a>
-</nav>
-</header>
-
-<div class="section">
-<h2>Explore Heritage, Hills, Waterfalls & Beaches</h2>
-</div>
-
-<div class="grid">
-<div class="place-card">
-<img src="https://images.unsplash.com/photo-1593697904942-8f24c85ec6ef?auto=format&fit=crop&w=800&q=60">
-<h3>Mysore Palace</h3>
-<p>A stunning architectural marvel illuminated with 100k lights.</p>
-</div>
-
-<div class="place-card">
-<img src="https://images.unsplash.com/photo-1607252650355-f7fd0460ccdb?auto=format&fit=crop&w=800&q=60">
-<h3>Hampi</h3>
-<p>UNESCO World Heritage Site famous for ancient ruins.</p>
-</div>
-
-<div class="place-card">
-<img src="https://images.unsplash.com/photo-1626870196939-4b3bdf846dcd?auto=format&fit=crop&w=800&q=60">
-<h3>Jog Falls</h3>
-<p>India’s second-highest waterfall, breathtaking during monsoon.</p>
-</div>
-
-<div class="place-card">
-<img src="https://images.unsplash.com/photo-1584531735489-713270b3d18a?auto=format&fit=crop&w=800&q=60">
-<h3>Coorg</h3>
-<p>The Scotland of India, famous for coffee estates & green hills.</p>
-</div>
-</div>
-
-<div style="text-align:center;">
-<a href="packages.html" class="btn">See Travel Packages</a>
-</div>
-
-<footer>© 2025 Explore Karnataka</footer>
-
+    <header class="animate__animated animate__fadeInDown">
+        <h2>Tour Packages</h2>
+        <p>Handpicked experiences, local guides, easy bookings!</p>
+    </header>
+    <section class="package-list">
+        <div class="package-card animate__animated animate__fadeInUp">
+            <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=600&q=80" alt="Mysore Heritage"/>
+            <h3>Mysore Heritage</h3>
+            <ul>
+                <li>Duration: 2 Days/1 Night</li>
+                <li>Includes: Palace, Chamundi Hills, Brindavan Gardens</li>
+                <li>Transport: AC Coach</li>
+                <li>Starting at: ₹6,500</li>
+            </ul>
+            <button class="book-btn" onclick="location.href='payment.html?product=mysore';">Book Now</button>
+        </div>
+        <div class="package-card animate__animated animate__fadeInUp">
+            <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?auto=format&fit=crop&w=600&q=80" alt="Hampi Explorer"/>
+            <h3>Hampi Explorer</h3>
+            <ul>
+                <li>Duration: 3 Days/2 Nights</li>
+                <li>Includes: Ruins, Virupaksha Temple, River Safari</li>
+                <li>Transport: Train + Local Jeep</li>
+                <li>Starting at: ₹8,000</li>
+            </ul>
+            <button class="book-btn" onclick="location.href='payment.html?product=hampi';">Book Now</button>
+        </div>
+        <div class="package-card animate__animated animate__fadeInUp">
+            <img src="https://images.unsplash.com/photo-1513185158878-8a2b5f4388d0?auto=format&fit=crop&w=600&q=80" alt="Halebidu Temple Trail"/>
+            <h3>Halebidu Temple Trail</h3>
+            <ul>
+                <li>Duration: 1 Day</li>
+                <li>Includes: Halebidu, Belur, Coffee Shop Visit</li>
+                <li>Transport: Private Van</li>
+                <li>Starting at: ₹5,200</li>
+            </ul>
+            <button class="book-btn" onclick="location.href='payment.html?product=halebidu';">Book Now</button>
+        </div>
+        <div class="package-card animate__animated animate__fadeInUp">
+            <img src="https://images.unsplash.com/photo-1555685812-4b943f1b78fa?auto=format&fit=crop&w=600&q=80" alt="Coorg Escape"/>
+            <h3>Coorg Escape</h3>
+            <ul>
+                <li>Duration: 2 Days/2 Nights</li>
+                <li>Includes: Plantation Trek, Abbey Falls, Madikeri Fort</li>
+                <li>Transport: Sleeper Bus</li>
+                <li>Starting at: ₹7,500</li>
+            </ul>
+            <button class="book-btn" onclick="location.href='payment.html?product=coorg';">Book Now</button>
+        </div>
+        <div class="package-card animate__animated animate__fadeInUp">
+            <img src="https://images.unsplash.com/photo-1587735018730-ed136311f287?auto=format&fit=crop&w=600&q=80" alt="Badami Historic Tour"/>
+            <h3>Badami Historic Tour</h3>
+            <ul>
+                <li>Duration: 2 Days</li>
+                <li>Includes: Caves, Pattadakal, Aihole</li>
+                <li>Transport: AC Coach</li>
+                <li>Starting at: ₹6,300</li>
+            </ul>
+            <button class="book-btn" onclick="location.href='payment.html?product=badami';">Book Now</button>
+        </div>
+    </section>
+    <footer>
+        &copy; 2025 Explore Karnataka | All Rights Reserved
+    </footer>
 </body>
 </html>
