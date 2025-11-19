@@ -1,47 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Payment</title>
 
-<!-- GTM -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-KHPTRH75');</script>
-
-
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Payment - ShivNanadi Dairy Farm</title>
-<link rel="stylesheet" href="style.css">
-
+    <style>
+        body { background:#e8f5e9; font-family:Arial; margin:0; }
+        header { background:#1b4332; color:white; padding:20px; text-align:center; }
+        .form-container { margin:50px auto; width:320px; background:white; padding:25px;
+                          border-radius:10px; box-shadow:0 0 10px #aaa; }
+        input { width:100%; padding:10px; margin:10px 0; border-radius:5px; border:1px solid #888; }
+        .btn { background:#2d6a4f; color:white; padding:12px; width:100%; border:none;
+               font-size:16px; cursor:pointer; }
+    </style>
 </head>
 
 <body>
-    <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KHPTRH75"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
 
-<h1>Payment Page</h1>
+<header>
+    <h1>Confirm Your Booking</h1>
+</header>
 
-<form class="payment-form">
-    <label>Name:</label>
-    <input type="text" required>
+<div class="form-container">
+    <h3>Traveler Details</h3>
 
-    <label>Address:</label>
-    <input type="text" required>
+    <input type="text" placeholder="Full Name" required>
+    <input type="text" placeholder="Email" required>
+    <input type="text" placeholder="Phone Number" required>
+    <input type="text" placeholder="Payment UPI / Card" required>
 
-    <label>UPI / Card Number:</label>
-    <input type="text" required>
+    <button class="btn" onclick="location.href='thankyou.html'">Pay & Confirm</button>
 
-    <button type="submit" onclick="event.preventDefault(); location.href='thankyou.html'">
-        Pay Now
-    </button>
-</form>
-
-<br>
-<button onclick="location.href='product.html'">Back to Products</button>
+    <br><br>
+    <button class="btn" style="background:#6a040f" onclick="location.href='product.html'">Back</button>
+</div>
 
 </body>
 </html>
