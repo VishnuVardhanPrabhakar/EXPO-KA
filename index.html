@@ -3,220 +3,711 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vishnu's Naturals - Premium Organic Milk</title>
+    <title>Heritage Dairy Farm - Premium Dairy Products Since 1890</title>
     <style>
         :root {
-            --primary-color: #0E2943; /* Deep Navy/Dark Blue */
-            --secondary-color: #E67E22; /* Dark Orange/Amber for CTA */
-            --text-light: #F8F8F8;
-            --bg-main: #FFFFFF;
-            --bg-accent: #F4F4F4;
-            --font-stack: 'Helvetica Neue', Arial, sans-serif;
+            --gold: #D4AF37;
+            --dark-gold: #B8941F;
+            --light-gold: #F4E5B5;
+            --black: #0A0A0A;
+            --dark-gray: #1A1A1A;
+            --medium-gray: #2A2A2A;
+            --light-gray: #3A3A3A;
+            --cream: #FFF8E7;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: var(--font-stack);
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-main);
-            color: var(--primary-color);
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background-color: var(--black);
+            color: var(--cream);
             line-height: 1.6;
         }
 
-        /* Header & Navigation */
+        /* Header */
         header {
-            background-color: var(--bg-main);
-            color: var(--primary-color);
-            padding: 15px 40px;
+            background: linear-gradient(135deg, var(--black) 0%, var(--dark-gray) 100%);
+            border-bottom: 3px solid var(--gold);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid var(--bg-accent);
         }
 
         .logo {
-            font-size: 1.8em;
-            font-weight: 700;
-            color: var(--primary-color);
-            text-decoration: none;
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--gold);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: var(--light-gold);
+            font-size: 0.8rem;
+            display: block;
+            font-style: italic;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
         }
 
         nav a {
-            color: var(--primary-color);
+            color: var(--cream);
             text-decoration: none;
-            margin-left: 30px;
-            font-weight: 500;
-            transition: color 0.3s;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            position: relative;
+            padding: 0.5rem 0;
         }
 
         nav a:hover {
-            color: var(--secondary-color);
+            color: var(--gold);
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--gold);
+            color: var(--black);
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: bold;
         }
 
         /* Hero Section */
         .hero {
-            padding: 80px 40px;
-            background-color: var(--bg-accent);
+            background: linear-gradient(rgba(10, 10, 10, 0.7), rgba(10, 10, 10, 0.8)), 
+                        url('https://images.unsplash.com/photo-1628088062854-d1870b4553da?w=1600') center/cover;
+            min-height: 90vh;
             display: flex;
             align-items: center;
-            justify-content: space-around;
-            text-align: left;
-            gap: 40px;
+            justify-content: center;
+            text-align: center;
+            border-bottom: 5px solid var(--gold);
+            position: relative;
         }
 
-        .hero-text {
-            max-width: 500px;
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                rgba(212, 175, 55, 0.03) 2px,
+                rgba(212, 175, 55, 0.03) 4px
+            );
+        }
+
+        .hero-content {
+            max-width: 900px;
+            padding: 2rem;
+            position: relative;
+            z-index: 1;
         }
 
         .hero h1 {
-            color: var(--primary-color);
-            font-size: 3.5em;
-            line-height: 1.1;
-            margin-bottom: 20px;
+            font-size: 4.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.8);
+            letter-spacing: 3px;
+            font-weight: 700;
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            color: var(--light-gold);
+            margin-bottom: 2rem;
+            font-style: italic;
         }
 
         .hero p {
-            font-size: 1.2em;
-            color: #555;
-            margin-bottom: 30px;
+            font-size: 1.2rem;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
         }
 
-        .hero-image {
-            max-width: 45%;
-            min-width: 300px;
-            height: 400px;
-            border-radius: 10px;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            object-fit: cover;
-        }
-
-        .cta-button {
+        .btn {
             display: inline-block;
-            background-color: var(--secondary-color);
-            color: var(--text-light);
-            padding: 15px 30px;
+            padding: 1rem 3rem;
+            background: var(--gold);
+            color: var(--black);
             text-decoration: none;
             border-radius: 5px;
+            font-size: 1.1rem;
             font-weight: bold;
-            letter-spacing: 0.5px;
-            transition: background-color 0.3s, transform 0.3s;
+            transition: all 0.3s;
+            border: 2px solid var(--gold);
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .cta-button:hover {
-            background-color: #D66C15;
-            transform: translateY(-2px);
+        .btn:hover {
+            background: transparent;
+            color: var(--gold);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
         }
 
-        /* Feature Section */
+        .btn-secondary {
+            background: transparent;
+            color: var(--gold);
+            border: 2px solid var(--gold);
+        }
+
+        .btn-secondary:hover {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        /* Features Section */
         .features {
-            padding: 60px 40px;
+            padding: 5rem 2rem;
+            background: var(--dark-gray);
+            border-top: 1px solid var(--gold);
+            border-bottom: 1px solid var(--gold);
+        }
+
+        .section-title {
             text-align: center;
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
         }
 
-        .features h2 {
-            color: var(--primary-color);
-            margin-bottom: 40px;
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: var(--light-gold);
+            margin-bottom: 4rem;
+            font-style: italic;
         }
 
-        .feature-grid {
-            display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 30px;
+        .features-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
         }
 
-        .feature-item {
-            flex-basis: 280px;
-            padding: 20px;
-            border: 1px solid var(--bg-accent);
-            border-radius: 8px;
-            transition: box-shadow 0.3s;
-        }
-        
-        .feature-item:hover {
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        .feature-card {
+            background: var(--medium-gray);
+            padding: 2.5rem;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid var(--light-gray);
+            transition: all 0.3s;
         }
 
-        .feature-item h3 {
-            color: var(--secondary-color);
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        .feature-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .feature-card h3 {
+            color: var(--gold);
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-card p {
+            color: var(--cream);
+            line-height: 1.8;
+        }
+
+        /* Products Preview */
+        .products-preview {
+            padding: 5rem 2rem;
+            background: var(--black);
+        }
+
+        .products-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2.5rem;
+        }
+
+        .product-card {
+            background: var(--dark-gray);
+            border-radius: 12px;
+            overflow: hidden;
+            border: 2px solid var(--light-gray);
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--gold);
+            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.4);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-name {
+            font-size: 1.4rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .product-description {
+            color: var(--cream);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            color: var(--light-gold);
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .add-to-cart {
+            width: 100%;
+            padding: 0.8rem;
+            background: var(--gold);
+            color: var(--black);
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+        }
+
+        .add-to-cart:hover {
+            background: var(--dark-gold);
+            transform: scale(1.05);
+        }
+
+        /* About Section */
+        .about {
+            padding: 5rem 2rem;
+            background: var(--dark-gray);
+            border-top: 1px solid var(--gold);
+        }
+
+        .about-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            width: 100%;
+            border-radius: 10px;
+            border: 3px solid var(--gold);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .about-text h2 {
+            color: var(--gold);
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 5rem 2rem;
+            background: var(--black);
+            border-top: 1px solid var(--gold);
+        }
+
+        .testimonials-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+
+        .testimonial-card {
+            background: var(--medium-gray);
+            padding: 2.5rem;
+            border-radius: 10px;
+            border: 2px solid var(--gold);
+            position: relative;
+        }
+
+        .testimonial-card::before {
+            content: '"';
+            font-size: 5rem;
+            color: var(--gold);
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            opacity: 0.3;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .testimonial-author {
+            color: var(--gold);
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .testimonial-role {
+            color: var(--light-gold);
+            font-size: 0.9rem;
         }
 
         /* Footer */
         footer {
-            background-color: var(--primary-color);
-            color: var(--text-light);
-            text-align: center;
-            padding: 30px 0;
-            margin-top: 40px;
+            background: var(--dark-gray);
+            border-top: 3px solid var(--gold);
+            padding: 3rem 2rem;
         }
 
-        /* Responsiveness */
-        @media (max-width: 900px) {
-            .hero {
-                flex-direction: column;
-                text-align: center;
-            }
-            .hero-image {
-                max-width: 80%;
-                margin-top: 30px;
-            }
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: var(--cream);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--light-gray);
+            color: var(--light-gold);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2.5em;
+                font-size: 2.5rem;
             }
-            header {
-                flex-direction: column;
+
+            .hero .subtitle {
+                font-size: 1.2rem;
             }
-            nav {
-                margin-top: 15px;
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
             }
-            nav a {
-                margin: 0 10px;
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Header -->
     <header>
-        <a href="index.html" class="logo">Vishnu's Naturals</a>
         <nav>
-            <a href="index.html">Home</a>
-            <a href="products.html">Shop</a>
-            <a href="products.html">Our Farm</a>
-            <a href="products.html">Contact</a>
+            <div class="logo">
+                Heritage Dairy
+                <span>Est. 1890</span>
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li class="cart-icon">
+                    <a href="payment.html">🛒 Cart</a>
+                    <span class="cart-count" id="cartCount">0</span>
+                </li>
+            </ul>
         </nav>
     </header>
 
-    <main>
-        <div class="hero">
-            <div class="hero-text">
-                <h1>The Pure Taste of Nature's Goodness</h1>
-                <p>From our ethical farms to your table, Vishnu's Naturals delivers premium, organic dairy products that are fresh, delicious, and responsibly sourced.</p>
-                <a href="products.html" class="cta-button">Explore Our Products</a>
-            </div>
-            <img class="hero-image" src="https://i.imgur.com/GzB0Hh5.jpg" alt="Premium Organic Milk Bottle">
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Heritage Dairy Farm</h1>
+            <p class="subtitle">Preserving Tradition Since 1890</p>
+            <p>Experience the finest dairy products crafted with time-honored methods and unwavering dedication to quality. From our family farm to your table.</p>
+            <a href="products.html" class="btn">Explore Our Collection</a>
         </div>
+    </section>
 
-        <section class="features">
-            <h2>Why Choose Vishnu's Naturals?</h2>
-            <div class="feature-grid">
-                <div class="feature-item">
-                    <h3>🌱 Certified Organic</h3>
-                    <p>Sustainably farmed with respect for the earth and our animals.</p>
-                </div>
-                <div class="feature-item">
-                    <h3>🧈 Richer Taste</h3>
-                    <p>Our products boast exceptional flavor, thanks to superior quality feed.</p>
-                </div>
-                <div class="feature-item">
-                    <h3>📦 Fast Delivery</h3>
-                    <p>Freshness guaranteed with quick, temperature-controlled delivery.</p>
-                </div>
+    <!-- Features Section -->
+    <section class="features">
+        <h2 class="section-title">Our Heritage</h2>
+        <p class="section-subtitle">Five Generations of Excellence</p>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🏛️</div>
+                <h3>135 Years Legacy</h3>
+                <p>Since 1890, our family has been crafting premium dairy products using traditional methods passed down through generations.</p>
             </div>
-        </section>
-    </main>
+            <div class="feature-card">
+                <div class="feature-icon">🐄</div>
+                <h3>Heritage Breeds</h3>
+                <p>Our grass-fed cows from historic bloodlines produce the richest, most flavorful milk you'll ever taste.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">⚗️</div>
+                <h3>Artisan Craft</h3>
+                <p>Every product is handcrafted using time-tested techniques, ensuring unmatched quality and authentic flavor.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🏆</div>
+                <h3>Award Winning</h3>
+                <p>Recognized internationally for our exceptional quality and commitment to traditional dairy craftsmanship.</p>
+            </div>
+        </div>
+    </section>
 
-    <footer>
-        <p>&copy; 2025 Vishnu's Naturals. The purest form of dairy.</p>
+    <!-- Products Preview -->
+    <section class="products-preview">
+        <h2 class="section-title">Featured Products</h2>
+        <p class="section-subtitle">Handpicked selections from our finest collection</p>
+        <div class="products-grid" id="productsGrid"></div>
+        <div style="text-align: center; margin-top: 3rem;">
+            <a href="products.html" class="btn">View All Products</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-content">
+            <img src="https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=600" alt="Heritage Dairy Farm" class="about-image">
+            <div class="about-text">
+                <h2>A Legacy of Excellence</h2>
+                <p>Founded in 1890 by the Blackwood family, Heritage Dairy Farm has been a cornerstone of quality dairy production for over 135 years. What began as a small family operation with just twelve cows has grown into a respected institution, yet we've never forgotten our roots.</p>
+                <p>Our historic stone barn, built in 1892, still stands today as a testament to our enduring commitment to traditional methods. Every morning, our cows graze on the same rolling pastures their ancestors did, producing milk of extraordinary quality.</p>
+                <p>We believe in honoring the past while embracing responsible stewardship. Our products are crafted using recipes perfected over five generations, ensuring that every bite and sip connects you to a rich heritage of excellence.</p>
+                <a href="products.html" class="btn btn-secondary">Discover Our Story</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <h2 class="section-title">What Our Patrons Say</h2>
+        <p class="section-subtitle">Voices from our loyal community</p>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <p class="testimonial-text">"Heritage Dairy's butter is unlike anything you'll find in stores. It tastes like stepping back in time to when everything was made with care and authenticity. Simply remarkable."</p>
+                <p class="testimonial-author">Margaret Wellington</p>
+                <p class="testimonial-role">Food Historian</p>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"As a chef, I demand the finest ingredients. Heritage Dairy's cream and cheese have become irreplaceable in my kitchen. The quality speaks for itself."</p>
+                <p class="testimonial-author">Chef Alexandre Dubois</p>
+                <p class="testimonial-role">Michelin Star Chef</p>
+            </div>
+            <div class="testimonial-card">
+                <p class="testimonial-text">"I've been a customer for thirty years, just as my parents were before me. The consistency and quality never waver. It's like having a piece of history on your table."</p>
+                <p class="testimonial-author">Robert Thornton</p>
+                <p class="testimonial-role">Long-time Patron</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Heritage Dairy Farm</h3>
+                <p>Est. 1890</p>
+                <p>Preserving tradition, one product at a time.</p>
+                <p style="margin-top: 1rem;">📍 Blackwood Estate, Countryside Manor</p>
+                <p>📞 +91-1800-HERITAGE</p>
+                <p>✉️ heritage@dairyfarm.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="products.html">Products</a>
+                <a href="#about">About Us</a>
+                <a href="payment.html">Cart</a>
+            </div>
+            <div class="footer-section">
+                <h3>Customer Service</h3>
+                <a href="#">Shipping Information</a>
+                <a href="#">Returns & Exchanges</a>
+                <a href="#">FAQ</a>
+                <a href="#">Contact Us</a>
+            </div>
+            <div class="footer-section">
+                <h3>Newsletter</h3>
+                <p>Subscribe to receive updates about our heritage products and special offerings.</p>
+                <input type="email" placeholder="Your email" style="width: 100%; padding: 0.8rem; margin-top: 1rem; background: var(--medium-gray); border: 1px solid var(--gold); border-radius: 5px; color: var(--cream);">
+                <button class="btn" style="width: 100%; margin-top: 1rem;">Subscribe</button>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Heritage Dairy Farm. All rights reserved. | Established 1890</p>
+        </div>
     </footer>
+
+    <script>
+        // Products data
+        const products = [
+            { id: 1, name: "Heritage Whole Milk", price: 85, image: "https://pplx-res.cloudinary.com/image/upload/v1763795844/search_images/ddd3f5311720ca1fe6a94fefe2fefdcea0c41607.jpg", description: "Fresh whole milk from grass-fed cows" },
+            { id: 2, name: "Artisan Cheddar", price: 320, image: "https://pplx-res.cloudinary.com/image/upload/v1763795844/search_images/6deb59e77863f8dee1e9392fc343274ca80ab857.jpg", description: "Aged 24 months for rich flavor" },
+            { id: 3, name: "Golden Butter", price: 180, image: "https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=400", description: "Churned butter with sea salt" },
+            { id: 4, name: "Classic Yogurt", price: 95, image: "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400", description: "Thick and creamy traditional yogurt" },
+            { id: 5, name: "Heavy Cream", price: 145, image: "https://images.unsplash.com/photo-1563636619-e9143da7973b?w=400", description: "Rich cream for cooking" },
+            { id: 6, name: "Fresh Paneer", price: 165, image: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=400", description: "Handmade cottage cheese" },
+            { id: 7, name: "Vanilla Ice Cream", price: 245, image: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=400", description: "Premium vanilla bean ice cream" },
+            { id: 8, name: "Swiss Cheese", price: 385, image: "https://images.unsplash.com/photo-1618164436241-4473940d1f5c?w=400", description: "Authentic Swiss with holes" }
+        ];
+
+        // Display featured products
+        function displayProducts() {
+            const grid = document.getElementById('productsGrid');
+            products.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}" class="product-image">
+                    <div class="product-info">
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-description">${product.description}</p>
+                        <p class="product-price">₹${product.price}</p>
+                        <button class="add-to-cart" onclick="addToCart(${product.id})">Add to Cart</button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Cart functionality
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            
+            const existingItem = cart.find(item => item.id === productId);
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            alert(`${product.name} added to cart!`);
+        }
+
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartCount').textContent = count;
+        }
+
+        // Initialize
+        displayProducts();
+        updateCartCount();
+    </script>
 </body>
 </html>
