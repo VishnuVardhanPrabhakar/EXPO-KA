@@ -3,40 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thank You! - Willow Creek Dairy</title>
+    <title>Order Complete! - Willow Creek Dairy</title>
     <style>
         :root {
-            --primary-color: #4CAF50;
-            --secondary-color: #FFC107;
-            --bg-light: #F9F9E0;
-            --text-dark: #2E4053;
-            --font-stack: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --primary-color: #0E2943;
+            --secondary-color: #E67E22;
+            --text-light: #F8F8F8;
+            --bg-main: #FFFFFF;
+            --bg-accent: #F4F4F4;
+            --font-stack: 'Helvetica Neue', Arial, sans-serif;
         }
 
         body {
             font-family: var(--font-stack);
             margin: 0;
             padding: 0;
-            background-color: var(--bg-light);
-            color: var(--text-dark);
+            background-color: var(--bg-accent);
+            color: var(--primary-color);
             line-height: 1.6;
             text-align: center;
         }
 
-        header, footer {
+        header {
             background-color: var(--primary-color);
-            color: white;
-            padding: 20px 0;
+            color: var(--text-light);
+            padding: 25px 0;
         }
         
         .container {
-            max-width: 600px;
+            max-width: 650px;
             margin: 60px auto;
             padding: 40px;
-            background-color: white;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            background-color: var(--bg-main);
+            border-radius: 8px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
         }
+
+        .confirmation-icon {
+            font-size: 5em;
+            color: #2ECC71; /* Success Green */
+            margin-bottom: 20px;
+            display: inline-block;
+            animation: pulse 1s infinite alternate;
+        }
+        
+        @keyframes pulse {
+            from { transform: scale(1); }
+            to { transform: scale(1.05); }
+        }
+
 
         h1 {
             color: var(--primary-color);
@@ -44,63 +59,95 @@
             margin-bottom: 10px;
         }
         
-        .confirmation-icon {
-            font-size: 4em;
+        h3 {
+            font-weight: 500;
             color: var(--secondary-color);
-            margin-bottom: 20px;
         }
 
         p {
             font-size: 1.1em;
-            margin-bottom: 25px;
+            margin-bottom: 15px;
+        }
+
+        .details-box {
+            background-color: var(--bg-accent);
+            padding: 20px;
+            border-radius: 6px;
+            margin: 30px 0;
+            text-align: left;
+            font-size: 0.95em;
         }
 
         .back-home {
             display: inline-block;
-            background-color: var(--text-dark);
-            color: white;
-            padding: 12px 25px;
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            padding: 15px 35px;
             text-decoration: none;
             border-radius: 5px;
             font-weight: bold;
             transition: background-color 0.3s;
+            margin-top: 20px;
         }
 
         .back-home:hover {
-            background-color: #5D6D7E;
+            background-color: #0A1C2B;
         }
         
-        .delivery-note {
-            margin-top: 30px;
-            font-style: italic;
-            color: #666;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-left: 5px solid var(--secondary-color);
-            background-color: #FAFAFA;
+        /* Placeholder for animated image */
+        .animated-dairy-image {
+            width: 100px;
+            height: 100px;
+            margin: 20px auto;
+            /* Placeholder for a small animated AI-generated icon */
+            background-color: #E67E22; 
+            border-radius: 50%;
+            display: block;
+            opacity: 0.8;
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 60px;
         }
     </style>
 </head>
 <body>
     <header>
-        <h2>Order Confirmed!</h2>
+        <h2>Your Order is Complete!</h2>
     </header>
 
     <div class="container">
-        <div class="confirmation-icon">✅</div>
-        <h1>Thank You For Your Order!</h1>
-        <p>Your farm-fresh dairy products are being prepared for shipment.</p>
-        <p><strong>Order Number: #WCD-2025-1002A</strong> (Simulated)</p>
-        <p>A detailed receipt has been sent to your email address (simulated).</p>
+        <div class="confirmation-icon">✔</div>
+        <h1>Thank You, <span id="customer-name">Valued Customer</span>!</h1>
+        <h3>Your Premium Dairy Order is Confirmed.</h3>
 
-        <div class="delivery-note">
-            Your delivery is expected to arrive within 1-2 business days. Please ensure someone is available to receive the refrigerated items.
+        <div class="details-box">
+            <p><strong>Order Reference:</strong> #WCD-2025-A0587</p>
+            <p><strong>Estimated Delivery:</strong> 1-2 Business Days (Freshness Guaranteed)</p>
+            <p>A detailed receipt has been sent to the email address provided during checkout.</p>
         </div>
-         <a href="index.html" class="back-home">Return to Homepage</a>
+        
+        <div class="animated-dairy-image" title="AI Generated animated icon of a stylized milk carton"></div>
+        <p>We appreciate your support for sustainable, organic farming.</p>
+
+        <a href="index.html" class="back-home">Continue Shopping</a>
     </div>
 
     <footer>
-        <p>Willow Creek Dairy - Pure Goodness.</p>
+        <p>Willow Creek Dairy - Farm Fresh to Your Home.</p>
     </footer>
+    
+    <script>
+        // Retrieve and display customer name if available
+        const name = localStorage.getItem('customer_name');
+        if (name) {
+            document.getElementById('customer-name').textContent = name.split(' ')[0]; // Display first name
+            localStorage.removeItem('customer_name'); // Clean up temporary storage
+        }
+    </script>
 </body>
 </html>
