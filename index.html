@@ -1,237 +1,158 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Dairy Farm Market — Fresh Organic Dairy</title>
-  <style>
-    :root {
-      --green: #3fa43f;
-      --dark: #274c27;
-      --light: #f3fff3;
-      --card: #ffffff;
-    }
-    * { box-sizing: border-box; }
-    body {
-      margin: 0;
-      font-family: 'Arial', sans-serif;
-      color: var(--dark);
-      background: var(--light);
-    }
-    header {
-      position: sticky;
-      top: 0;
-      background: rgba(63,164,63, 0.9);
-      padding: 16px 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      z-index: 10;
-    }
-    header .logo {
-      font-size: 24px;
-      font-weight: bold;
-      color: white;
-    }
-    nav a {
-      color: white;
-      margin-left: 18px;
-      text-decoration: none;
-      font-weight: 600;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Willow Creek Dairy - Farm Fresh to You</title>
+    <style>
+        :root {
+            --primary-color: #4CAF50; /* Organic Green */
+            --secondary-color: #FFC107; /* Golden Yellow/Cream */
+            --bg-light: #F9F9E0; /* Off-White/Creamy Background */
+            --text-dark: #2E4053; /* Dark Blue/Charcoal Text */
+            --font-stack: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    .hero {
-      position: relative;
-      width: 100%;
-      height: 90vh;
-      background-image: url('https://images.unsplash.com/photo-1575811070794-2a4f48f7e1e4?auto=format&fit=crop&w=1650&q=80');
-      background-size: cover;
-      background-position: center;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      text-align: center;
-    }
-    .hero::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.4);
-    }
-    .hero-content {
-      position: relative;
-      max-width: 800px;
-      padding: 0 20px;
-    }
-    .hero-content h1 {
-      font-size: 48px;
-      margin-bottom: 16px;
-      line-height: 1.1;
-    }
-    .hero-content p {
-      font-size: 20px;
-      margin-bottom: 24px;
-    }
-    .btn {
-      background: var(--green);
-      color: white;
-      padding: 14px 28px;
-      border: none;
-      border-radius: 8px;
-      font-size: 18px;
-      cursor: pointer;
-      text-decoration: none;
-    }
-    .section {
-      padding: 60px 24px;
-      max-width: 1200px;
-      margin: auto;
-    }
-    .section-title {
-      font-size: 32px;
-      margin-bottom: 24px;
-      text-align: center;
-    }
-    .cards-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 24px;
-    }
-    .card {
-      background: var(--card);
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-      display: flex;
-      flex-direction: column;
-    }
-    .card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-    .card-body {
-      padding: 16px;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-    .card-body h3 {
-      margin: 0 0 8px;
-    }
-    .card-body p {
-      flex: 1;
-      font-size: 14px;
-      color: #555;
-    }
-    .card-body .price {
-      font-weight: bold;
-      margin-top: 12px;
-      color: var(--green);
-    }
-    .card-body .btn-buy {
-      margin-top: 16px;
-      align-self: start;
-    }
-    footer {
-      background: var(--dark);
-      color: white;
-      padding: 40px 24px;
-      text-align: center;
-    }
+        body {
+            font-family: var(--font-stack);
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
 
-    @media (max-width: 768px) {
-      .hero-content h1 { font-size: 36px; }
-      .hero-content p { font-size: 18px; }
-    }
-  </style>
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--secondary-color);
+        }
+
+        .hero {
+            text-align: center;
+            padding: 60px 20px;
+            background: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url(''); /* AI Generated Image Placeholder */
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero h1 {
+            color: var(--primary-color);
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--text-dark);
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #FFD740;
+            transform: scale(1.05);
+        }
+
+        .features {
+            display: flex;
+            justify-content: space-around;
+            padding: 40px 20px;
+            text-align: center;
+            flex-wrap: wrap;
+        }
+
+        .feature-item {
+            flex-basis: 30%;
+            min-width: 250px;
+            margin: 20px 0;
+        }
+
+        .feature-item h3 {
+            color: var(--primary-color);
+        }
+
+        footer {
+            background-color: var(--text-dark);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 768px) {
+            .features {
+                flex-direction: column;
+                align-items: center;
+            }
+            .feature-item {
+                flex-basis: 90%;
+            }
+            .hero h1 {
+                font-size: 2.5em;
+            }
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
 
-  <header>
-    <div class="logo">Dairy Farm Market</div>
-    <nav>
-      <a href="#products">Products</a>
-      <a href="#story">Our Story</a>
-      <a href="#why">Why Choose Us</a>
-      <a href="#footer">Contact</a>
-    </nav>
-  </header>
-
-  <section class="hero">
-    <div class="hero-content">
-      <h1>Pure, Organic Dairy From Our Farm to Your Table</h1>
-      <p>Experience the taste of freshness — milk, cheese, ghee, butter & more, delivered with love.</p>
-      <a href="#products" class="btn">Shop Now</a>
+    <div class="hero">
+        <h1>Welcome to Willow Creek Dairy</h1>
+        <p>Pure, Organic Goodness, Delivered Straight From Our Farm to Your Table.</p>
+         <a href="products.html" class="cta-button">Shop Our Farm Selection</a>
     </div>
-  </section>
 
-  <section id="products" class="section">
-    <div class="section-title">Our Products</div>
-    <div class="cards-grid">
-      <!-- Example cards, you will fill 30+ -->
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1560484319-9a0656f4a957?auto=format&fit=crop&w=800&q=80" alt="Fresh Milk">
-        <div class="card-body">
-          <h3>Fresh Cow Milk (1L)</h3>
-          <p>Grass-fed cow milk, farm-fresh and unprocessed.</p>
-          <div class="price">₹50 / L</div>
-          <a href="payment.html" class="btn btn-buy">Buy Now</a>
+    <hr>
+
+    <div class="features">
+        <div class="feature-item">
+            <h3>🌱 Organic & Natural</h3>
+            <p>Our cows graze on lush, certified organic pastures year-round.</p>
         </div>
-      </div>
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1600180758895-62c8f6c717af?auto=format&fit=crop&w=800&q=80" alt="Desi Ghee">
-        <div class="card-body">
-          <h3>Desi Ghee (500g)</h3>
-          <p>Traditionally prepared ghee with aroma & purity.</p>
-          <div class="price">₹750</div>
-          <a href="payment.html" class="btn btn-buy">Buy Now</a>
+        <div class="feature-item">
+            <h3>📦 Local Delivery</h3>
+            <p>Freshly packed and delivered to your doorstep within hours of production.</p>
         </div>
-      </div>
-      <!-- add more cards similarly... -->
+        <div class="feature-item">
+            <h3>❤️ Happy Cows</h3>
+            <p>We prioritize the health and well-being of our herd for the best quality milk.</p>
+        </div>
     </div>
-  </section>
 
-  <section id="story" class="section" style="background-image: url('https://images.unsplash.com/photo-1509475826633-fed577a2c71b?auto=format&fit=crop&w=1600&q=80'); background-size: cover; background-position: center; color: white;">
-    <div style="max-width:800px; margin:auto; background:rgba(0,0,0,0.4); padding: 40px; border-radius: 16px;">
-      <h2>Our Story</h2>
-      <p>We are a family-run, organic dairy farm — caring for our cows, our land, and our community. Our mission is to bring purity, sustainability & traceability to every drop.</p>
-    </div>
-  </section>
-
-  <section id="why" class="section">
-    <div class="section-title">Why Choose Us</div>
-    <div class="cards-grid">
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1576765607920-2138e7d69a23?auto=format&fit=crop&w=800&q=80" alt="No preservatives">
-        <div class="card-body">
-          <h3>No Preservatives</h3>
-          <p>All our dairy products are free from artificial additives and preservatives.</p>
-        </div>
-      </div>
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1580910051074-3af719a8a3a2?auto=format&fit=crop&w=800&q=80" alt="Farm Fresh">
-        <div class="card-body">
-          <h3>Farm Fresh</h3>
-          <p>Collected daily from our own pastures to ensure freshness and quality.</p>
-        </div>
-      </div>
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1582819509237-dace1fc5a1aa?auto=format&fit=crop&w=800&q=80" alt="Sustainable">
-        <div class="card-body">
-          <h3>Sustainable Farming</h3>
-          <p>We practice regenerative grazing & humane animal care to protect the earth.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer id="footer">
-    <div class="section-title">Connect With Us</div>
-    <p class="center">+91 90000 00000 | orders@dairyfarm.com</p>
-    <p class="center small">© 2025 Dairy Farm Market. All rights reserved.</p>
-  </footer>
-
+    <footer>
+        <p>&copy; 2025 Willow Creek Dairy. All Rights Reserved.</p>
+    </footer>
 </body>
 </html>
