@@ -3,297 +3,535 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secure Checkout - Vishnu's Naturals</title>
+    <title>Shopping Cart - Heritage Dairy Farm</title>
     <style>
         :root {
-            --primary-color: #0E2943;
-            --secondary-color: #E67E22;
-            --text-light: #F8F8F8;
-            --bg-main: #FFFFFF;
-            --bg-accent: #F4F4F4;
-            --font-stack: 'Helvetica Neue', Arial, sans-serif;
+            --gold: #D4AF37;
+            --dark-gold: #B8941F;
+            --light-gold: #F4E5B5;
+            --black: #0A0A0A;
+            --dark-gray: #1A1A1A;
+            --medium-gray: #2A2A2A;
+            --light-gray: #3A3A3A;
+            --cream: #FFF8E7;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: var(--font-stack);
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-accent);
-            color: var(--primary-color);
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background-color: var(--black);
+            color: var(--cream);
             line-height: 1.6;
         }
 
         header {
-            background-color: var(--primary-color);
-            color: var(--text-light);
-            padding: 25px 0;
-            text-align: center;
+            background: linear-gradient(135deg, var(--black) 0%, var(--dark-gray) 100%);
+            border-bottom: 3px solid var(--gold);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
         }
 
-        .container {
-            max-width: 700px;
-            margin: 40px auto;
-            padding: 30px;
-            background-color: var(--bg-main);
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        h2 {
-            text-align: center;
-            color: var(--primary-color);
-            margin-bottom: 30px;
-            font-weight: 600;
-        }
-        
-        h3 {
-            color: var(--primary-color);
-            border-bottom: 2px solid var(--bg-accent);
-            padding-bottom: 8px;
-            margin-top: 30px;
-            margin-bottom: 15px;
-        }
-
-        .checkout-form label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 500;
-            font-size: 0.9em;
-            color: #444;
-        }
-
-        .checkout-form input[type="text"],
-        .checkout-form input[type="email"],
-        .checkout-form input[type="tel"] {
-            width: 100%;
-            padding: 12px;
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            font-size: 1em;
-        }
-        
-        .checkout-form .grid {
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
             display: flex;
-            gap: 20px;
+            justify-content: space-between;
+            align-items: center;
         }
-        
-        .checkout-form .grid > div {
-            flex-grow: 1;
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--gold);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: var(--light-gold);
+            font-size: 0.8rem;
+            display: block;
+            font-style: italic;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        nav a {
+            color: var(--cream);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        .page-header {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: var(--dark-gray);
+            border-bottom: 3px solid var(--gold);
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            letter-spacing: 2px;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: var(--light-gold);
+            font-style: italic;
+        }
+
+        .cart-container {
+            max-width: 1400px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+        }
+
+        .cart-items {
+            background: var(--dark-gray);
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            padding: 2rem;
+        }
+
+        .cart-item {
+            display: grid;
+            grid-template-columns: 120px 1fr auto;
+            gap: 1.5rem;
+            padding: 1.5rem;
+            background: var(--medium-gray);
+            border-radius: 8px;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--light-gray);
+        }
+
+        .cart-item img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 2px solid var(--gold);
+        }
+
+        .item-details h3 {
+            color: var(--gold);
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .item-details p {
+            color: var(--light-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .quantity-controls {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .quantity-controls button {
+            width: 35px;
+            height: 35px;
+            background: var(--gold);
+            color: var(--black);
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .quantity-controls button:hover {
+            background: var(--dark-gold);
+            transform: scale(1.1);
+        }
+
+        .quantity-controls span {
+            font-size: 1.2rem;
+            color: var(--cream);
+            min-width: 30px;
+            text-align: center;
+        }
+
+        .item-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: space-between;
+        }
+
+        .item-price {
+            font-size: 1.6rem;
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        .remove-btn {
+            padding: 0.5rem 1rem;
+            background: transparent;
+            color: var(--cream);
+            border: 1px solid var(--cream);
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .remove-btn:hover {
+            background: var(--gold);
+            color: var(--black);
+            border-color: var(--gold);
         }
 
         .order-summary {
-            background-color: var(--bg-accent);
-            padding: 20px;
-            border-radius: 6px;
-            margin-top: 30px;
-        }
-        
-        #cart-list {
-            list-style: none;
-            padding: 0;
-            margin: 0 0 15px 0;
-        }
-        
-        #cart-list li {
-            display: flex;
-            justify-content: space-between;
-            padding: 5px 0;
-            border-bottom: 1px dashed #ddd;
-            font-size: 0.95em;
+            background: var(--dark-gray);
+            border: 2px solid var(--gold);
+            border-radius: 12px;
+            padding: 2rem;
+            height: fit-content;
+            position: sticky;
+            top: 100px;
         }
 
-        .order-summary strong {
-            display: flex;
-            justify-content: space-between;
-            font-size: 1.2em;
-            padding-top: 10px;
-            border-top: 2px solid var(--secondary-color);
-            margin-top: 10px;
+        .order-summary h2 {
+            color: var(--gold);
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 2px solid var(--gold);
+            padding-bottom: 1rem;
         }
 
-        .place-order {
-            display: block;
-            width: 100%;
-            background-color: var(--secondary-color);
-            color: var(--text-light);
-            border: none;
-            padding: 15px;
-            margin-top: 25px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1.1em;
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .summary-row.total {
+            font-size: 1.5rem;
+            color: var(--gold);
             font-weight: bold;
-            transition: background-color 0.3s;
+            border-top: 2px solid var(--gold);
+            padding-top: 1rem;
+            margin-top: 1rem;
         }
 
-        .place-order:hover {
-            background-color: #D66C15;
-        }
-        
-        /* Responsiveness */
-        @media (max-width: 600px) {
-            .checkout-form .grid {
-                flex-direction: column;
-            }
-            .container {
-                margin: 20px;
-                padding: 20px;
-            }
+        .payment-form {
+            margin-top: 2rem;
         }
 
-        footer {
-            background-color: var(--primary-color);
-            color: var(--text-light);
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            background: var(--medium-gray);
+            border: 1px solid var(--gold);
+            border-radius: 5px;
+            color: var(--cream);
+            font-size: 1rem;
+            font-family: 'Georgia', serif;
+        }
+
+        .form-group input:focus, .form-group select:focus {
+            outline: none;
+            border-color: var(--light-gold);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+        }
+
+        .checkout-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: var(--gold);
+            color: var(--black);
+            border: none;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 1.5rem;
+        }
+
+        .checkout-btn:hover {
+            background: var(--dark-gold);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.4);
+        }
+
+        .empty-cart {
             text-align: center;
-            padding: 30px 0;
-            margin-top: 40px;
+            padding: 4rem 2rem;
+            color: var(--light-gold);
+        }
+
+        .empty-cart h2 {
+            color: var(--gold);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .empty-cart p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: var(--gold);
+            color: var(--black);
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            transition: all 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background: var(--dark-gold);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 968px) {
+            .cart-container {
+                grid-template-columns: 1fr;
+            }
+
+            .cart-item {
+                grid-template-columns: 100px 1fr;
+                gap: 1rem;
+            }
+
+            .item-actions {
+                grid-column: 1 / -1;
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                margin-top: 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
 <body>
     <header>
-        <h2>Secure Checkout</h2>
+        <nav>
+            <div class="logo">
+                Heritage Dairy
+                <span>Est. 1890</span>
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
 
-    <div class="container">
-        
-        <form id="payment-form" class="checkout-form">
-            <h3>Contact Information</h3>
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required>
-            
-            <h3>Shipping Information</h3>
-            <label for="name">Full Name</label>
-            <input type="text" id="name" name="name" required>
-
-            <label for="address">Street Address</label>
-            <input type="text" id="address" name="address" required>
-
-            <div class="grid">
-                <div>
-                    <label for="city">City</label>
-                    <input type="text" id="city" name="city" required>
-                </div>
-                <div>
-                    <label for="zip">Postal Code</label>
-                    <input type="text" id="zip" name="zip" required>
-                </div>
-            </div>
-
-            <h3>Payment Details (Simulated)</h3>
-            <label for="card">Card Number</label>
-            <input type="text" id="card" name="card" placeholder="XXXX XXXX XXXX XXXX" required>
-
-            <div class="grid">
-                <div>
-                    <label for="expiry">Expiry (MM/YY)</label>
-                    <input type="text" id="expiry" name="expiry" placeholder="01/26" required>
-                </div>
-                <div>
-                    <label for="cvv">CVV</label>
-                    <input type="text" id="cvv" name="cvv" placeholder="123" required>
-                </div>
-            </div>
-            
-            <div class="order-summary">
-                <h3>Order Summary</h3>
-                <ul id="cart-list">
-                    </ul>
-                <p>Delivery: <span id="shipping-price">$0.00</span></p>
-                <strong>Total: <span id="total-price">$0.00</span></strong>
-            </div>
-
-            <button type="submit" class="place-order">Complete Secure Order</button>
-        </form>
+    <div class="page-header">
+        <h1>Shopping Cart</h1>
+        <p>Review your selection before checkout</p>
     </div>
 
-    <footer>
-        <p>Protected by secure SSL. Vishnu's Naturals - Fresh Payment.</p>
-    </footer>
+    <div class="cart-container" id="cartContainer"></div>
 
     <script>
-        const SHIPPING_FEE = 10.00; 
-
-        function getCart() {
-            try {
-                const storedCart = localStorage.getItem('dairy_cart');
-                return storedCart ? JSON.parse(storedCart) : [];
-            } catch (e) {
-                console.error("Error retrieving cart:", e);
-                return [];
-            }
-        }
-
-        function populateCart() {
-            const cartList = document.getElementById('cart-list');
-            const totalPriceSpan = document.getElementById('total-price');
-            const shippingPriceSpan = document.getElementById('shipping-price');
-            const cart = getCart();
-            let subtotal = 0;
-
-            cartList.innerHTML = ''; 
+        function displayCart() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const container = document.getElementById('cartContainer');
 
             if (cart.length === 0) {
-                cartList.innerHTML = '<li><p>Your cart is empty. <a href="products.html">Start Shopping</a>.</p></li>';
-                shippingPriceSpan.textContent = '$0.00';
-                totalPriceSpan.textContent = '$0.00';
+                container.innerHTML = `
+                    <div class="empty-cart" style="grid-column: 1 / -1;">
+                        <h2>🛒 Your Cart is Empty</h2>
+                        <p>Discover our exquisite collection of heritage dairy products</p>
+                        <a href="products.html" class="btn">Browse Products</a>
+                    </div>
+                `;
                 return;
             }
 
-            // 1. Calculate Subtotal and list items
-            cart.forEach(item => {
-                const itemTotal = item.price * item.quantity;
-                subtotal += itemTotal;
-                
-                const listItem = document.createElement('li');
-                listItem.innerHTML = `
-                    <span>${item.name} x ${item.quantity}</span>
-                    <span>$${itemTotal.toFixed(2)}</span>
-                `;
-                cartList.appendChild(listItem);
-            });
-            
-            // 2. Add Subtotal line
-            const subtotalItem = document.createElement('li');
-            subtotalItem.innerHTML = '<span>Subtotal:</span><span>$' + subtotal.toFixed(2) + '</span>';
-            subtotalItem.style.fontWeight = 'bold';
-            subtotalItem.style.borderBottom = 'none';
-            cartList.appendChild(subtotalItem);
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const shipping = subtotal > 500 ? 0 : 50;
+            const total = subtotal + shipping;
 
-            // 3. Calculate Total
-            const total = subtotal + SHIPPING_FEE;
-
-            // 4. Update displays
-            shippingPriceSpan.textContent = `$${SHIPPING_FEE.toFixed(2)}`;
-            totalPriceSpan.textContent = `$${total.toFixed(2)}`;
+            container.innerHTML = `
+                <div class="cart-items">
+                    <h2 style="color: var(--gold); font-size: 2rem; margin-bottom: 1.5rem;">Cart Items</h2>
+                    ${cart.map(item => `
+                        <div class="cart-item">
+                            <img src="${item.image}" alt="${item.name}">
+                            <div class="item-details">
+                                <h3>${item.name}</h3>
+                                <p>${item.description}</p>
+                                <p style="color: var(--gold); font-size: 1.2rem; font-weight: bold;">₹${item.price} each</p>
+                                <div class="quantity-controls">
+                                    <button onclick="updateQuantity(${item.id}, -1)">-</button>
+                                    <span>${item.quantity}</span>
+                                    <button onclick="updateQuantity(${item.id}, 1)">+</button>
+                                </div>
+                            </div>
+                            <div class="item-actions">
+                                <p class="item-price">₹${item.price * item.quantity}</p>
+                                <button class="remove-btn" onclick="removeItem(${item.id})">Remove</button>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+                <div class="order-summary">
+                    <h2>Order Summary</h2>
+                    <div class="summary-row">
+                        <span>Subtotal:</span>
+                        <span>₹${subtotal}</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Shipping:</span>
+                        <span>${shipping === 0 ? 'FREE' : '₹' + shipping}</span>
+                    </div>
+                    ${shipping > 0 ? `<p style="font-size: 0.9rem; color: var(--light-gold); margin-top: 0.5rem;">Free shipping on orders above ₹500</p>` : ''}
+                    <div class="summary-row total">
+                        <span>Total:</span>
+                        <span>₹${total}</span>
+                    </div>
+                    
+                    <div class="payment-form">
+                        <h3 style="color: var(--gold); margin-bottom: 1rem;">Payment Details</h3>
+                        <div class="form-group">
+                            <label>Full Name</label>
+                            <input type="text" id="fullName" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" id="email" placeholder="your@email.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="tel" id="phone" placeholder="+91 XXXXX XXXXX" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Address</label>
+                            <input type="text" id="address" placeholder="Street address" required>
+                        </div>
+                        <div class="form-group">
+                            <label>City</label>
+                            <input type="text" id="city" placeholder="City" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Payment Method</label>
+                            <select id="paymentMethod" required>
+                                <option value="">Select payment method</option>
+                                <option value="cod">Cash on Delivery</option>
+                                <option value="upi">UPI</option>
+                                <option value="card">Credit/Debit Card</option>
+                                <option value="netbanking">Net Banking</option>
+                            </select>
+                        </div>
+                        <button class="checkout-btn" onclick="processCheckout()">Place Order - ₹${total}</button>
+                    </div>
+                </div>
+            `;
         }
 
-        document.getElementById('payment-form').addEventListener('submit', function(event) {
-            event.preventDefault(); 
+        function updateQuantity(productId, change) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const item = cart.find(i => i.id === productId);
             
-            if (getCart().length === 0) {
-                alert('Your cart is empty. Please add items to place an order.');
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    cart = cart.filter(i => i.id !== productId);
+                }
+            }
+            
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCart();
+        }
+
+        function removeItem(productId) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart = cart.filter(item => item.id !== productId);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            displayCart();
+        }
+
+        function processCheckout() {
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const address = document.getElementById('address').value;
+            const city = document.getElementById('city').value;
+            const paymentMethod = document.getElementById('paymentMethod').value;
+
+            if (!fullName || !email || !phone || !address || !city || !paymentMethod) {
+                alert('Please fill in all fields');
                 return;
             }
 
-            const name = document.getElementById('name').value;
-            // Store the first name for use on the thank you page
-            localStorage.setItem('customer_name', name.split(' ')[0]);
-            
-            // Simulate a successful transaction
-            alert('Processing Payment... Success!');
-            
-            // Clear the cart after successful order simulation
-            localStorage.removeItem('dairy_cart'); 
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const orderData = {
+                customer: { fullName, email, phone, address, city },
+                items: cart,
+                paymentMethod: paymentMethod,
+                orderDate: new Date().toISOString()
+            };
 
-            // Redirect to the thank you page
+            localStorage.setItem('lastOrder', JSON.stringify(orderData));
+            localStorage.setItem('cart', JSON.stringify([]));
             window.location.href = 'thankyou.html';
-        });
+        }
 
-        // Populate the cart summary when the page loads
-        populateCart();
+        displayCart();
     </script>
 </body>
 </html>
