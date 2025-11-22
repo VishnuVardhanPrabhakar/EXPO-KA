@@ -1,166 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-KHPTRH75');</script>
-<!-- End Google Tag Manager -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Explore Karnataka</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <style>
-        body {
-            margin: 0;
-            min-height: 100vh;
-            font-family: 'Segoe UI', Arial, sans-serif;
-            color: #efefff;
-            background: linear-gradient(180deg, #2232a9 0%, #194ba8 40%, #041349 100%);
-            background-image: url('images/kannadamate-cosmic.png'), url('images/stars-bg.png');
-            background-position: center, top;
-            background-size: cover, cover;
-            background-repeat: no-repeat, repeat;
-        }
-        header {
-            padding: 2.5rem 1.5rem;
-            text-align: center;
-            background: rgba(6,12,35,0.85);
-            border-bottom: 3px solid #3fd2db;
-            box-shadow: 0 8px 32px #0c146066;
-        }
-        header h1 {
-            font-size: 3.2rem;
-            color: #73d3f7;
-            letter-spacing: 2px;
-            text-shadow: 0 0 18px #3455e0;
-        }
-        header p {
-            font-size: 1.3rem;
-            color: #e6ebfa;
-            margin-top: 0.7rem;
-            margin-bottom: 0;
-        }
-        .places {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2.5rem;
-            justify-content: center;
-            margin: 4rem 0 0 0;
-        }
-        .place-card {
-            background: rgba(21,40,95,0.93);
-            border-radius: 16px;
-            box-shadow: 0 6px 44px #5ba1fa38;
-            width: 330px;
-            padding: 1.3rem;
-            margin-bottom: 2rem;
-            transition: transform 0.27s;
-        }
-        .place-card:hover {
-            transform: scale(1.06) rotate(-1.5deg);
-            box-shadow: 0 13px 54px #9fd2e3b6;
-        }
-        .place-card img {
-            width: 100%;
-            border-radius: 12px;
-            margin-bottom: 1rem;
-            animation: pulse 2.5s infinite;
-            box-shadow: 0 4px 24px #51b9f088;
-        }
-        .place-card .place-title {
-            margin: 0.4rem 0 0.1rem 0;
-            color: #62e3fa;
-            font-size: 1.5rem;
-            letter-spacing: 1px;
-            text-shadow: 0 0 8px #2642a8;
-        }
-        .place-card p {
-            color: #e0eaf7;
-            font-size: 1rem;
-        }
-        .action-btn {
-            background: linear-gradient(90deg,#23aaff,#6832a8);
-            color: #fff;
-            border: none;
-            font-size: 1.1rem;
-            padding: 0.9rem 2rem;
-            border-radius: 12px;
-            cursor: pointer;
-            margin: 3rem auto 0 auto;
-            display: block;
-            font-weight: 600;
-            letter-spacing: 1px;
-            box-shadow: 0 2px 8px #4472e029;
-            transition: background 0.2s;
-        }
-        .action-btn:hover { background: #6832a8; }
-        @media (max-width: 900px) {
-            .places { flex-direction: column; align-items: center; }
-            .place-card { width: 94vw; }
-        }
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 #23aaff44; }
-            60% { box-shadow: 0 0 16px 8px #23aaff80; }
-            100% { box-shadow: 0 0 0 0 #23aaff44; }
-        }
-        footer {
-            background:#2642a8;
-            color: #e2f3fa;
-            text-align: center;
-            padding: 1.5rem;
-            margin-top: 5rem;
-            letter-spacing: 1px;
-        }
-    </style>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-RWTSB1LS3E"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-RWTSB1LS3E');
+</script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dairy Farm - Home</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #e9f7e9;
+      color: #2f4f2f;
+    }
+    header {
+      background: #3fa43f;
+      padding: 20px;
+      text-align: center;
+      color: white;
+      font-size: 28px;
+      font-weight: bold;
+    }
+    .hero {
+      background-image: url('https://images.unsplash.com/photo-1598514982620-2f0bbf3c161b');
+      background-size: cover;
+      background-position: center;
+      height: 70vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.3);
+    }
+    .hero-text {
+      position: relative;
+      color: white;
+      font-size: 40px;
+      text-align: center;
+      animation: fadeIn 2s ease-in-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .section {
+      padding: 40px;
+      text-align: center;
+    }
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      padding: 20px;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      transition: 0.3s;
+    }
+    .card:hover {
+      transform: scale(1.05);
+    }
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .card h3 {
+      padding: 15px;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 25px;
+      background: #3fa43f;
+      color: white;
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 18px;
+      transition: 0.3s;
+    }
+    .btn:hover {
+      background: #2f7a2f;
+    }
+    footer {
+      background: #2d652d;
+      text-align: center;
+      padding: 15px;
+      color: white;
+      margin-top: 40px;
+    }
+  </style>
 </head>
 <body>
-    <!-- Google Tag Manager (noscript) -->
-<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KHPTRH75"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<!-- End Google Tag Manager (noscript) -->
-    <header class="animate__animated animate__fadeInDown">
-        <h1>Explore Karnataka</h1>
-        <p>Discover the cosmic heritage and vibrant history of Karnataka’s iconic places. Your universe of adventure awaits!</p>
-    </header>
-    <section class="places">
-        <!-- Update `src` with your animated/cosmic images -->
-        <div class="place-card animate__animated animate__zoomIn">
-            <img src="images/mysore-cosmic.gif" alt="Mysore Palace Cosmic" />
-            <div class="place-title">Mysore</div>
-            <p>Grand palaces, Dasara festivals, and cosmic architecture.</p>
-        </div>
-        <div class="place-card animate__animated animate__zoomIn">
-            <img src="images/hampi-animated.gif" alt="Hampi Cosmic" />
-            <div class="place-title">Hampi</div>
-            <p>Boulder-strewn ruins, ancient temples, and astral vistas.</p>
-        </div>
-        <div class="place-card animate__animated animate__zoomIn">
-            <img src="images/halebidu-cosmic.gif" alt="Halebidu Cosmic" />
-            <div class="place-title">Halebidu</div>
-            <p>Sculpted Hoysala temples glowing with astral stories.</p>
-        </div>
-        <div class="place-card animate__animated animate__zoomIn">
-            <img src="images/coorg-cosmic.gif" alt="Coorg Animated" />
-            <div class="place-title">Coorg</div>
-            <p>Cosmic hills, coffee aroma, waterfalls and blue galaxies.</p>
-        </div>
-        <div class="place-card animate__animated animate__zoomIn">
-            <img src="images/badami-cosmic.gif" alt="Badami Caves Cosmic"/>
-            <div class="place-title">Badami</div>
-            <p>Stone caves and cosmic god carvings await discovery.</p>
-        </div>
-        <div class="place-card animate__animated animate__zoomIn">
-            <img src="images/shivgange-cosmic.gif" alt="Shivagange Cosmic"/>
-            <div class="place-title">Shivagange</div>
-            <p>Starlit hilltop shrines and cosmic trekking paths.</p>
-        </div>
-    </section>
-    <button class="action-btn animate__animated animate__pulse" onclick="location.href='product.html';">Explore Packages</button>
-    <footer>
-        &copy; 2025 Explore Karnataka | Cosmic Heritage Tours
-    </footer>
+  <header>Dairy Farm Fresh</header>
+
+  <section class="hero">
+    <div class="hero-text">Pure • Organic • Farm Fresh</div>
+  </section>
+
+  <section class="section">
+    <h2>Our Specialities</h2>
+    <div class="cards">
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1580910051074-3af719a8a3a2" />
+        <h3>Fresh Milk</h3>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1600180758895-62c8f6c717af" />
+        <h3>Pure Ghee</h3>
+      </div>
+      <div class="card">
+        <img src="https://images.unsplash.com/photo-1582819509237-dace1fc5a1aa" />
+        <h3>Organic Butter</h3>
+      </div>
+    </div>
+    <a href="product.html" class="btn">Explore Products</a>
+  </section>
+
+  <footer>
+    © 2025 Dairy Farm Fresh. All Rights Reserved.
+  </footer>
 </body>
 </html>
