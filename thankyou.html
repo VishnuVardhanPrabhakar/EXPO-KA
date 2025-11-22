@@ -1,49 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RWTSB1LS3E"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-RWTSB1LS3E');
-</script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thank You</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Thank You - Dairy Farm</title>
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: #e9f7e9;
-      color: #2f4f2f;
+      background: #e8ffe8;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
       text-align: center;
+      color: #2f6d2f;
     }
-    .box {
-      background: white;
+    .thank-box {
+      background: #ffffff;
       padding: 40px;
-      border-radius: 16px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
-      animation: pop 1s ease;
+      border-radius: 20px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+      max-width: 500px;
+      animation: pop 0.8s ease;
     }
     @keyframes pop {
-      from { transform: scale(0.5); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
+      0% { transform: scale(0.5); opacity: 0; }
+      100% { transform: scale(1); opacity: 1; }
     }
-    .box img {
+    .thank-box img {
       width: 120px;
       margin-bottom: 20px;
-      animation: bounce 2s infinite;
-    }
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
     }
     h1 {
       font-size: 32px;
@@ -54,25 +41,29 @@
       margin-bottom: 20px;
     }
     a {
-      padding: 12px 25px;
-      background: #3fa43f;
-      color: white;
-      border-radius: 8px;
       text-decoration: none;
+      background: #2f8f2f;
+      color: white;
+      padding: 12px 22px;
+      border-radius: 10px;
       font-size: 18px;
       transition: 0.3s;
     }
-    a:hover { background: #2f7a2f; }
+    a:hover {
+      background: #256d25;
+    }
   </style>
 </head>
 <body>
+  <div class="thank-box">
 
-<div class="box">
-  <img src="https://cdn-icons-png.flaticon.com/512/845/845646.png" />
-  <h1>Thank You!</h1>
-  <p>Your order has been placed successfully.</p>
-  <a href="index.html">Return to Home</a>
-</div>
+    <!-- Animated SVG -->
+    <img src="https://www.svgrepo.com/show/484284/verified-check-circle.svg" alt="Success" />
 
+    <h1>Thank You!</h1>
+    <p>Your dairy order has been successfully placed.<br>We will deliver fresh farm products shortly.</p>
+
+    <a href="index.html">Back to Home</a>
+  </div>
 </body>
 </html>
