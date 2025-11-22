@@ -3,318 +3,494 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shop Our Dairy Products - Vishnu's Naturals</title>
+    <title>Our Products - Heritage Dairy Farm</title>
     <style>
         :root {
-            --primary-color: #0E2943;
-            --secondary-color: #E67E22;
-            --text-light: #F8F8F8;
-            --bg-main: #FFFFFF;
-            --bg-accent: #F4F4F4;
-            --font-stack: 'Helvetica Neue', Arial, sans-serif;
+            --gold: #D4AF37;
+            --dark-gold: #B8941F;
+            --light-gold: #F4E5B5;
+            --black: #0A0A0A;
+            --dark-gray: #1A1A1A;
+            --medium-gray: #2A2A2A;
+            --light-gray: #3A3A3A;
+            --cream: #FFF8E7;
+            --white: #FFFFFF;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
         body {
-            font-family: var(--font-stack);
-            margin: 0;
-            padding: 0;
-            background-color: var(--bg-main);
-            color: var(--primary-color);
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background-color: var(--black);
+            color: var(--cream);
             line-height: 1.6;
         }
 
         header {
-            background-color: var(--bg-main);
-            color: var(--primary-color);
-            padding: 15px 40px;
+            background: linear-gradient(135deg, var(--black) 0%, var(--dark-gray) 100%);
+            border-bottom: 3px solid var(--gold);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        nav {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 1.5rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            border-bottom: 1px solid var(--bg-accent);
         }
-        
+
         .logo {
-            font-size: 1.8em;
-            font-weight: 700;
-            color: var(--primary-color);
-            text-decoration: none;
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--gold);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            letter-spacing: 2px;
+        }
+
+        .logo span {
+            color: var(--light-gold);
+            font-size: 0.8rem;
+            display: block;
+            font-style: italic;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+            align-items: center;
         }
 
         nav a {
-            color: var(--primary-color);
+            color: var(--cream);
             text-decoration: none;
-            margin-left: 30px;
-            font-weight: 500;
-            transition: color 0.3s;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            position: relative;
+            padding: 0.5rem 0;
         }
 
         nav a:hover {
-            color: var(--secondary-color);
+            color: var(--gold);
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s;
         }
 
-        h2 {
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .cart-icon {
+            position: relative;
+            cursor: pointer;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--gold);
+            color: var(--black);
+            border-radius: 50%;
+            width: 22px;
+            height: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+
+        .page-header {
             text-align: center;
-            color: var(--primary-color);
-            margin-bottom: 50px;
-            font-size: 2.2em;
-            font-weight: 600;
+            padding: 4rem 2rem;
+            background: var(--dark-gray);
+            border-bottom: 3px solid var(--gold);
         }
 
-        .product-grid {
+        .page-header h1 {
+            font-size: 3.5rem;
+            color: var(--gold);
+            margin-bottom: 1rem;
+            letter-spacing: 3px;
+        }
+
+        .page-header p {
+            font-size: 1.3rem;
+            color: var(--light-gold);
+            font-style: italic;
+        }
+
+        .filters {
+            max-width: 1400px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .filter-btn {
+            padding: 0.8rem 2rem;
+            background: var(--medium-gray);
+            color: var(--cream);
+            border: 2px solid var(--gold);
+            border-radius: 5px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: 'Georgia', serif;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        .products-section {
+            padding: 3rem 2rem 5rem;
+            background: var(--black);
+        }
+
+        .products-grid {
+            max-width: 1400px;
+            margin: 0 auto;
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2.5rem;
         }
 
         .product-card {
-            background-color: var(--bg-main);
-            border: 1px solid var(--bg-accent);
-            border-radius: 8px;
+            background: var(--dark-gray);
+            border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-            text-align: left;
-            transition: box-shadow 0.3s;
+            border: 2px solid var(--light-gray);
+            transition: all 0.3s;
+            cursor: pointer;
         }
 
         .product-card:hover {
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+            transform: translateY(-8px);
+            border-color: var(--gold);
+            box-shadow: 0 12px 30px rgba(212, 175, 55, 0.4);
         }
 
-        .product-card img {
+        .product-image {
             width: 100%;
             height: 250px;
             object-fit: cover;
+            border-bottom: 2px solid var(--gold);
         }
 
         .product-info {
-            padding: 20px;
+            padding: 1.5rem;
         }
 
-        .product-info h3 {
-            color: var(--primary-color);
-            margin: 0 0 5px 0;
-            font-size: 1.4em;
-        }
-        
-        .product-info p {
-            font-size: 0.9em;
-            color: #777;
-            margin-bottom: 15px;
+        .product-category {
+            color: var(--light-gold);
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
         }
 
-        .price {
-            color: var(--secondary-color);
-            font-size: 1.6em;
-            font-weight: 700;
-            margin-bottom: 15px;
+        .product-name {
+            font-size: 1.4rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .product-description {
+            color: var(--cream);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            color: var(--light-gold);
+            font-weight: bold;
+            margin-bottom: 1rem;
         }
 
         .add-to-cart {
             width: 100%;
-            background-color: var(--primary-color);
-            color: var(--text-light);
+            padding: 0.8rem;
+            background: var(--gold);
+            color: var(--black);
             border: none;
-            padding: 12px 20px;
             border-radius: 5px;
-            cursor: pointer;
+            font-size: 1rem;
             font-weight: bold;
-            transition: background-color 0.3s;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-transform: uppercase;
         }
 
         .add-to-cart:hover {
-            background-color: #0A1C2B;
-        }
-        
-        /* Checkout Bar */
-        .checkout-bar {
-            text-align: center;
-            margin-top: 50px;
-            padding: 20px;
-            border-top: 1px solid var(--bg-accent);
-        }
-
-        .checkout-bar a {
-            display: inline-block;
-            background-color: var(--secondary-color);
-            color: var(--text-light);
-            padding: 15px 40px;
-            text-decoration: none;
-            border-radius: 5px;
-            font-size: 1.1em;
-            font-weight: bold;
-            transition: background-color 0.3s;
-        }
-        
-        .checkout-bar a:hover {
-            background-color: #D66C15;
+            background: var(--dark-gold);
+            transform: scale(1.05);
         }
 
         footer {
-            background-color: var(--primary-color);
-            color: var(--text-light);
-            text-align: center;
-            padding: 30px 0;
-            margin-top: 40px;
+            background: var(--dark-gray);
+            border-top: 3px solid var(--gold);
+            padding: 3rem 2rem;
         }
 
-        /* Responsiveness */
-        @media (max-width: 900px) {
-            header {
-                flex-direction: column;
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: var(--cream);
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: var(--gold);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--light-gray);
+            color: var(--light-gold);
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2.5rem;
             }
-            nav {
-                margin-top: 15px;
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
             }
-            nav a {
-                margin: 0 10px;
+
+            .filters {
+                gap: 1rem;
+            }
+
+            .filter-btn {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.9rem;
             }
         }
     </style>
 </head>
 <body>
     <header>
-        <a href="index.html" class="logo">Vishnu's Naturals</a>
         <nav>
-            <a href="index.html">Home</a>
-            <a href="products.html">Shop</a>
-            <a href="products.html">Our Farm</a>
-            <a href="products.html">Contact</a>
+            <div class="logo">
+                Heritage Dairy
+                <span>Est. 1890</span>
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+                <li class="cart-icon">
+                    <a href="payment.html">🛒 Cart</a>
+                    <span class="cart-count" id="cartCount">0</span>
+                </li>
+            </ul>
         </nav>
     </header>
 
-    <div class="container">
-        <h2>Our Premium Organic Collection</h2>
-        
-        <div class="product-grid">
-            
-            <div class="product-card">
-                <img src="https://i.imgur.com/x0qj7X8.jpg" alt="Organic Whole Milk">
-                <div class="product-info">
-                    <h3>Organic Whole Milk (A2)</h3>
-                    <p>Creamy, fresh, and unhomogenized A2 milk.</p>
-                    <div class="price">$6.50</div>
-                    <button class="add-to-cart" onclick="addToCart('Whole Milk A2', 6.50)">Add to Cart</button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="https://i.imgur.com/gK7eP6X.jpg" alt="Artisan Cheddar">
-                <div class="product-info">
-                    <h3>Artisan Aged Cheddar</h3>
-                    <p>Sharp, rich, naturally aged for 12 months.</p>
-                    <div class="price">$14.99</div>
-                    <button class="add-to-cart" onclick="addToCart('Aged Cheddar', 14.99)">Add to Cart</button>
-                </div>
-            </div>
-            
-            <div class="product-card">
-                <img src="https://i.imgur.com/YwA1sU5.jpg" alt="Plain Greek Yogurt">
-                <div class="product-info">
-                    <h3>Probiotic Greek Yogurt</h3>
-                    <p>Thick, strained, and packed with live cultures.</p>
-                    <div class="price">$4.75</div>
-                    <button class="add-to-cart" onclick="addToCart('Greek Yogurt', 4.75)">Add to Cart</button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="https://i.imgur.com/FwY8t0z.jpg" alt="Cultured Butter">
-                <div class="product-info">
-                    <h3>Cultured Barrel Butter</h3>
-                    <p>European-style, high-fat content. Slow-churned.</p>
-                    <div class="price">$8.50</div>
-                    <button class="add-to-cart" onclick="addToCart('Cultured Butter', 8.50)">Add to Cart</button>
-                </div>
-            </div>
-            
-            <div class="product-card">
-                <img src="https://i.imgur.com/bZ2QvYl.jpg" alt="Ghee Clarified Butter">
-                <div class="product-info">
-                    <h3>Pure Cow Ghee (500ml)</h3>
-                    <p>Traditional Bilona process. Aromatic and healthy.</p>
-                    <div class="price">$22.00</div>
-                    <button class="add-to-cart" onclick="addToCart('Pure Cow Ghee', 22.00)">Add to Cart</button>
-                </div>
-            </div>
-            
-            <div class="product-card">
-                <img src="https://i.imgur.com/D4sT9lZ.jpg" alt="Paneer Indian Cheese">
-                <div class="product-info">
-                    <h3>Fresh Handcrafted Paneer (200g)</h3>
-                    <p>Soft and milky, perfect for curries and grilling.</p>
-                    <div class="price">$6.00</div>
-                    <button class="add-to-cart" onclick="addToCart('Fresh Paneer', 6.00)">Add to Cart</button>
-                </div>
-            </div>
-
-        </div>
-        
-        <div class="checkout-bar">
-            <a href="payment.html" id="checkout-link">View Cart (0 Items)</a>
-        </div>
-        
+    <div class="page-header">
+        <h1>Our Complete Collection</h1>
+        <p>Explore 35+ Premium Dairy Products</p>
     </div>
 
+    <div class="filters">
+        <button class="filter-btn active" onclick="filterProducts('all')">All Products</button>
+        <button class="filter-btn" onclick="filterProducts('milk')">Milk & Cream</button>
+        <button class="filter-btn" onclick="filterProducts('cheese')">Cheese</button>
+        <button class="filter-btn" onclick="filterProducts('butter')">Butter & Spreads</button>
+        <button class="filter-btn" onclick="filterProducts('yogurt')">Yogurt & Probiotics</button>
+        <button class="filter-btn" onclick="filterProducts('dessert')">Desserts</button>
+    </div>
+
+    <section class="products-section">
+        <div class="products-grid" id="productsGrid"></div>
+    </section>
+
     <footer>
-        <p>&copy; 2025 Vishnu's Naturals. Excellence in Dairy.</p>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>Heritage Dairy Farm</h3>
+                <p>Est. 1890</p>
+                <p>Preserving tradition, one product at a time.</p>
+                <p style="margin-top: 1rem;">📍 Blackwood Estate, Countryside Manor</p>
+                <p>📞 +91-1800-HERITAGE</p>
+                <p>✉️ heritage@dairyfarm.com</p>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <a href="index.html">Home</a>
+                <a href="products.html">Products</a>
+                <a href="index.html#about">About Us</a>
+                <a href="payment.html">Cart</a>
+            </div>
+            <div class="footer-section">
+                <h3>Customer Service</h3>
+                <a href="#">Shipping Information</a>
+                <a href="#">Returns & Exchanges</a>
+                <a href="#">FAQ</a>
+                <a href="#">Contact Us</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Heritage Dairy Farm. All rights reserved. | Established 1890</p>
+        </div>
     </footer>
 
     <script>
-        // Simple client-side cart management using localStorage
-        // Define all product prices here for use in both products.html and payment.html
-        const PRODUCT_PRICES = {
-            'Whole Milk A2': 6.50,
-            'Aged Cheddar': 14.99,
-            'Greek Yogurt': 4.75,
-            'Cultured Butter': 8.50,
-            'Pure Cow Ghee': 22.00,
-            'Fresh Paneer': 6.00
-            // Add any new products here with their prices
-        };
-
-        function getCart() {
-            try {
-                const storedCart = localStorage.getItem('dairy_cart');
-                return storedCart ? JSON.parse(storedCart) : [];
-            } catch (e) {
-                console.error("Error retrieving cart:", e);
-                return [];
-            }
-        }
-
-        function saveCart(cart) {
-            localStorage.setItem('dairy_cart', JSON.stringify(cart));
-            updateCartDisplay(cart);
-        }
-
-        function addToCart(productName, price) {
-            let cart = getCart();
-            const existingItem = cart.find(item => item.name === productName);
+        const allProducts = [
+            // Milk & Cream
+            { id: 1, name: "Heritage Whole Milk", price: 85, category: "milk", image: "https://pplx-res.cloudinary.com/image/upload/v1763795844/search_images/ddd3f5311720ca1fe6a94fefe2fefdcea0c41607.jpg", description: "Fresh whole milk from grass-fed cows" },
+            { id: 2, name: "Organic Skimmed Milk", price: 75, category: "milk", image: "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400", description: "Fat-free organic milk" },
+            { id: 3, name: "A2 Premium Milk", price: 120, category: "milk", image: "https://images.unsplash.com/photo-1563636619-e9143da7973b?w=400", description: "Pure A2 protein milk" },
+            { id: 4, name: "Heavy Cream", price: 145, category: "milk", image: "https://images.unsplash.com/photo-1628088062854-d1870b4553da?w=400", description: "Rich cream for cooking" },
+            { id: 5, name: "Half & Half Cream", price: 95, category: "milk", image: "https://images.unsplash.com/photo-1517673132405-a56a62b18caf?w=400", description: "Perfect for coffee" },
+            { id: 6, name: "Whipping Cream", price: 165, category: "milk", image: "https://images.unsplash.com/photo-1481391243133-f96216dcb5d2?w=400", description: "For desserts and toppings" },
+            { id: 7, name: "Condensed Milk", price: 135, category: "milk", image: "https://images.unsplash.com/photo-1563379091339-03b287448dd4?w=400", description: "Sweet condensed milk" },
+            { id: 8, name: "Buttermilk", price: 65, category: "milk", image: "https://images.unsplash.com/photo-1623065422902-30a2d299bbe4?w=400", description: "Traditional cultured buttermilk" },
             
+            // Cheese
+            { id: 9, name: "Artisan Cheddar", price: 320, category: "cheese", image: "https://pplx-res.cloudinary.com/image/upload/v1763795844/search_images/6deb59e77863f8dee1e9392fc343274ca80ab857.jpg", description: "Aged 24 months for rich flavor" },
+            { id: 10, name: "Swiss Cheese", price: 385, category: "cheese", image: "https://images.unsplash.com/photo-1618164436241-4473940d1f5c?w=400", description: "Authentic Swiss with holes" },
+            { id: 11, name: "Gouda Cheese", price: 355, category: "cheese", image: "https://images.unsplash.com/photo-1486297678162-eb2a19b0a32d?w=400", description: "Creamy Dutch Gouda" },
+            { id: 12, name: "Blue Cheese", price: 425, category: "cheese", image: "https://images.unsplash.com/photo-1452195100486-9cc805987862?w=400", description: "Bold and tangy blue" },
+            { id: 13, name: "Mozzarella", price: 195, category: "cheese", image: "https://images.unsplash.com/photo-1528541206229-ab1f63d99f3e?w=400", description: "Fresh buffalo mozzarella" },
+            { id: 14, name: "Fresh Paneer", price: 165, category: "cheese", image: "https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=400", description: "Handmade cottage cheese" },
+            { id: 15, name: "Parmesan Aged", price: 485, category: "cheese", image: "https://images.unsplash.com/photo-1589881133595-c7f3f75c8784?w=400", description: "24-month aged Parmesan" },
+            { id: 16, name: "Brie Cheese", price: 395, category: "cheese", image: "https://images.unsplash.com/photo-1559561853-08451507cbe7?w=400", description: "Soft French Brie" },
+            { id: 17, name: "Feta Cheese", price: 245, category: "cheese", image: "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?w=400", description: "Greek style feta" },
+            { id: 18, name: "Cream Cheese", price: 185, category: "cheese", image: "https://images.unsplash.com/photo-1618164436241-4473940d1f5c?w=400", description: "Smooth spreadable cheese" },
+
+            // Butter & Spreads
+            { id: 19, name: "Golden Butter", price: 180, category: "butter", image: "https://images.unsplash.com/photo-1589985270826-4b7bb135bc9d?w=400", description: "Churned butter with sea salt" },
+            { id: 20, name: "Unsalted Butter", price: 170, category: "butter", image: "https://images.unsplash.com/photo-1550583724-b2692b85b150?w=400", description: "Pure unsalted butter" },
+            { id: 21, name: "Garlic Herb Butter", price: 225, category: "butter", image: "https://images.unsplash.com/photo-1576867757603-05b134ebc379?w=400", description: "Infused with herbs" },
+            { id: 22, name: "Clarified Ghee", price: 385, category: "butter", image: "https://images.unsplash.com/photo-1587048108426-e132e9e44c4f?w=400", description: "Traditional pure ghee" },
+            { id: 23, name: "Cultured Butter", price: 245, category: "butter", image: "https://images.unsplash.com/photo-1481291045041-a6af1b4e8c82?w=400", description: "European style cultured" },
+
+            // Yogurt & Probiotics
+            { id: 24, name: "Classic Yogurt", price: 95, category: "yogurt", image: "https://images.unsplash.com/photo-1488477181946-6428a0291777?w=400", description: "Thick and creamy traditional yogurt" },
+            { id: 25, name: "Greek Yogurt", price: 135, category: "yogurt", image: "https://images.unsplash.com/photo-1571212515416-37a3b37be6fa?w=400", description: "High protein Greek style" },
+            { id: 26, name: "Probiotic Yogurt", price: 125, category: "yogurt", image: "https://images.unsplash.com/photo-1590005354876-fcf3fc8b3604?w=400", description: "With live cultures" },
+            { id: 27, name: "Fruit Yogurt", price: 105, category: "yogurt", image: "https://images.unsplash.com/photo-1556909212-d5b604d0c90d?w=400", description: "Mixed fruit flavors" },
+            { id: 28, name: "Dahi (Curd)", price: 75, category: "yogurt", image: "https://images.unsplash.com/photo-1625944525533-473f1a3d54e7?w=400", description: "Traditional Indian curd" },
+            { id: 29, name: "Lassi", price: 85, category: "yogurt", image: "https://images.unsplash.com/photo-1609501676725-7186f017a4b7?w=400", description: "Sweet yogurt drink" },
+
+            // Desserts
+            { id: 30, name: "Vanilla Ice Cream", price: 245, category: "dessert", image: "https://images.unsplash.com/photo-1563805042-7684c019e1cb?w=400", description: "Premium vanilla bean ice cream" },
+            { id: 31, name: "Chocolate Ice Cream", price: 265, category: "dessert", image: "https://images.unsplash.com/photo-1570197788417-0e82375c9371?w=400", description: "Rich dark chocolate" },
+            { id: 32, name: "Strawberry Ice Cream", price: 255, category: "dessert", image: "https://images.unsplash.com/photo-1501443762994-82bd5dace89a?w=400", description: "Fresh strawberry flavor" },
+            { id: 33, name: "Kulfi (Traditional)", price: 195, category: "dessert", image: "https://images.unsplash.com/photo-1558691440-d69cd217d3f5?w=400", description: "Indian frozen dessert" },
+            { id: 34, name: "Rabri", price: 185, category: "dessert", image: "https://images.unsplash.com/photo-1626790680787-de5e9a07bcf2?w=400", description: "Sweet condensed milk dessert" },
+            { id: 35, name: "Shrikhand", price: 165, category: "dessert", image: "https://images.unsplash.com/photo-1615485500704-8e990f9900f7?w=400", description: "Saffron flavored yogurt dessert" }
+        ];
+
+        let currentFilter = 'all';
+
+        function displayProducts() {
+            const grid = document.getElementById('productsGrid');
+            grid.innerHTML = '';
+            
+            const filteredProducts = currentFilter === 'all' 
+                ? allProducts 
+                : allProducts.filter(p => p.category === currentFilter);
+
+            filteredProducts.forEach(product => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.innerHTML = `
+                    <img src="${product.image}" alt="${product.name}" class="product-image">
+                    <div class="product-info">
+                        <p class="product-category">${product.category}</p>
+                        <h3 class="product-name">${product.name}</h3>
+                        <p class="product-description">${product.description}</p>
+                        <p class="product-price">₹${product.price}</p>
+                        <button class="add-to-cart" onclick="addToCart(${product.id})">Add to Cart</button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function filterProducts(category) {
+            currentFilter = category;
+            displayProducts();
+            
+            // Update active button
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+        }
+
+        function addToCart(productId) {
+            const product = allProducts.find(p => p.id === productId);
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            
+            const existingItem = cart.find(item => item.id === productId);
             if (existingItem) {
                 existingItem.quantity += 1;
             } else {
-                cart.push({ name: productName, price: price, quantity: 1 });
+                cart.push({ ...product, quantity: 1 });
             }
             
-            saveCart(cart);
-            alert(`${productName} added to cart!`);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            updateCartCount();
+            alert(`${product.name} added to cart!`);
         }
 
-        function updateCartDisplay(cart) {
-            const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
-            const checkoutLink = document.getElementById('checkout-link');
-            checkoutLink.textContent = `View Cart (${totalQuantity} Items)`;
+        function updateCartCount() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            const count = cart.reduce((sum, item) => sum + item.quantity, 0);
+            document.getElementById('cartCount').textContent = count;
         }
 
-        // Initialize cart display on load
-        updateCartDisplay(getCart());
+        displayProducts();
+        updateCartCount();
     </script>
 </body>
 </html>
