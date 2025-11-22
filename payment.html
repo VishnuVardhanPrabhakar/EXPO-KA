@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Secure Checkout - Willow Creek Dairy</title>
+    <title>Secure Checkout - Vishnu's Naturals</title>
     <style>
         :root {
             --primary-color: #0E2943;
@@ -210,11 +210,11 @@
     </div>
 
     <footer>
-        <p>Protected by secure SSL. Farm Fresh, Secure Payment.</p>
+        <p>Protected by secure SSL. Vishnu's Naturals - Fresh Payment.</p>
     </footer>
 
     <script>
-        const SHIPPING_FEE = 10.00; // Flat rate shipping
+        const SHIPPING_FEE = 10.00; 
 
         function getCart() {
             try {
@@ -271,16 +271,16 @@
         }
 
         document.getElementById('payment-form').addEventListener('submit', function(event) {
-            event.preventDefault(); // Prevent form submission
+            event.preventDefault(); 
             
             if (getCart().length === 0) {
                 alert('Your cart is empty. Please add items to place an order.');
                 return;
             }
 
-            // Simple data capture before redirect (optional in real use)
             const name = document.getElementById('name').value;
-            localStorage.setItem('customer_name', name);
+            // Store the first name for use on the thank you page
+            localStorage.setItem('customer_name', name.split(' ')[0]);
             
             // Simulate a successful transaction
             alert('Processing Payment... Success!');
