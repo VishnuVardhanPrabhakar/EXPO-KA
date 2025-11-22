@@ -1,156 +1,213 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dairy Farm - Products</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #f2fff2;
-      color: #2f6d2f;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Products - Willow Creek Dairy</title>
+    <style>
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #FFC107;
+            --bg-light: #F9F9E0;
+            --text-dark: #2E4053;
+            --font-stack: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    header {
-      background: linear-gradient(#2f8f2f, #1f6d1f);
-      padding: 20px;
-      text-align: center;
-      color: white;
-      font-size: 30px;
-      font-weight: bold;
-      letter-spacing: 1px;
-    }
+        body {
+            font-family: var(--font-stack);
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
 
-    .container {
-      padding: 30px;
-      max-width: 1300px;
-      margin: auto;
-    }
+        header, footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        
+        header {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
 
-    .search-bar {
-      width: 100%;
-      padding: 15px;
-      border: 2px solid #2f8f2f;
-      border-radius: 10px;
-      margin-bottom: 25px;
-      font-size: 18px;
-    }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
 
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 25px;
-    }
+        nav a:hover {
+            color: var(--secondary-color);
+        }
 
-    .card {
-      background: white;
-      border-radius: 15px;
-      padding: 20px;
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-      transition: 0.3s;
-      animation: fadeIn 0.8s ease;
-    }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
 
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-    }
+        h2 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+        }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            padding-bottom: 40px;
+        }
 
-    .card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 12px;
-      background: #eaffea;
-    }
+        .product-card {
+            background-color: white;
+            border: 1px solid #E0E0C0;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+            text-align: center;
+            transition: transform 0.3s;
+        }
 
-    .title {
-      font-size: 22px;
-      font-weight: bold;
-      margin: 12px 0 5px 0;
-    }
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
 
-    .price {
-      font-size: 18px;
-      margin-bottom: 15px;
-      font-weight: 500;
-    }
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            /* Placeholder for AI Generated Images */
+        }
 
-    button {
-      width: 100%;
-      padding: 12px 0;
-      border: none;
-      background: #2f8f2f;
-      color: white;
-      font-size: 17px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+        .product-info {
+            padding: 15px;
+        }
 
-    button:hover {
-      background: #256d25;
-    }
-  </style>
+        .product-info h3 {
+            color: var(--text-dark);
+            margin-top: 0;
+        }
+
+        .price {
+            color: var(--primary-color);
+            font-size: 1.4em;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .add-to-cart {
+            background-color: var(--secondary-color);
+            color: var(--text-dark);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .add-to-cart:hover {
+            background-color: #FFD740;
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="products.html">Products</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </nav>
+    </header>
 
-<header>Dairy Farm – Fresh & Organic Products</header>
+    <div class="container">
+        <h2>Our Farm-Fresh Selection</h2>
+        
+        <div class="product-grid">
+            
+            <div class="product-card">
+                <img src="
 
-<div class="container">
+[Image of a glass bottle of organic milk]
+" alt="Organic Whole Milk">
+                <div class="product-info">
+                    <h3>Organic Whole Milk (1 Gallon)</h3>
+                    <p>Creamy, unhomogenized, and absolutely delicious.</p>
+                    <div class="price">$5.99</div>
+                    <button class="add-to-cart" onclick="addToCart('Whole Milk')">Add to Cart</button>
+                </div>
+            </div>
 
-  <input type="text" placeholder="Search products..." class="search-bar" onkeyup="searchProducts()" />
+            <div class="product-card">
+                <img src="" alt="Artisan Cheddar">
+                <div class="product-info">
+                    <h3>Farmhouse Cheddar Cheese</h3>
+                    <p>Aged 6 months for a sharp, rich, buttery flavor.</p>
+                    <div class="price">$12.50</div>
+                    <button class="add-to-cart" onclick="addToCart('Cheddar Cheese')">Add to Cart</button>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <img src="" alt="Plain Greek Yogurt">
+                <div class="product-info">
+                    <h3>Organic Plain Greek Yogurt</h3>
+                    <p>Thick, protein-rich, and naturally tangy.</p>
+                    <div class="price">$4.25</div>
+                    <button class="add-to-cart" onclick="addToCart('Greek Yogurt')">Add to Cart</button>
+                </div>
+            </div>
 
-  <div class="products-grid" id="productList"></div>
+            <div class="product-card">
+                <img src="" alt="Cultured Butter">
+                <div class="product-info">
+                    <h3>Cultured European-Style Butter</h3>
+                    <p>High butterfat content, slow-churned for the perfect spread.</p>
+                    <div class="price">$7.00</div>
+                    <button class="add-to-cart" onclick="addToCart('Cultured Butter')">Add to Cart</button>
+                </div>
+            </div>
 
-</div>
-
-<script>
-const products = [
-  { name: "Organic Cow Milk", price: "₹55/L", img: "https://www.svgrepo.com/show/522409/milk.svg" },
-  { name: "Buffalo Milk", price: "₹65/L", img: "https://www.svgrepo.com/show/522409/milk.svg" },
-  { name: "Full Cream Milk", price: "₹60/L", img: "https://www.svgrepo.com/show/157880/milk.svg" },
-  { name: "Skimmed Milk", price: "₹45/L", img: "https://www.svgrepo.com/show/496492/milk-carton.svg" },
-  { name: "Curd (Dahi)", price: "₹80/kg", img: "https://www.svgrepo.com/show/510967/bowl.svg" },
-  { name: "Ghee", price: "₹520/kg", img: "https://www.svgrepo.com/show/381308/butter.svg" },
-  { name: "Butter", price: "₹420/kg", img: "https://www.svgrepo.com/show/353851/butter.svg" },
-  { name: "Paneer", price: "₹380/kg", img: "https://www.svgrepo.com/show/474222/cheese.svg" },
-  { name: "Flavoured Milk", price: "₹35", img: "https://www.svgrepo.com/show/522409/milk.svg" },
-  { name: "Cheese", price: "₹420/kg", img: "https://www.svgrepo.com/show/474222/cheese.svg" }
-];
-
-function loadProducts() {
-  const grid = document.getElementById("productList");
-  grid.innerHTML = products.map(p => `
-    <div class='card'>
-      <img src='${p.img}' alt='${p.name}' />
-      <div class='title'>${p.name}</div>
-      <div class='price'>${p.price}</div>
-      <button onclick="buy('${p.name}', '${p.price}')">Buy Now</button>
+            </div>
+        
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="payment.html" class="add-to-cart" style="background-color: var(--primary-color); color: white; text-decoration: none;">Proceed to Checkout (0 Items)</a>
+        </div>
+        
     </div>
-  `).join('');
-}
 
-function searchProducts() {
-  const term = document.querySelector('.search-bar').value.toLowerCase();
-  document.querySelectorAll('.card').forEach(card => {
-    card.style.display = card.innerText.toLowerCase().includes(term) ? 'block' : 'none';
-  });
-}
+    <footer>
+        <p>&copy; 2025 Willow Creek Dairy. Freshness Guaranteed.</p>
+    </footer>
 
-function buy(name, price) {
-  localStorage.setItem("selectedProduct", JSON.stringify({ name, price }));
-  window.location.href = "payment.html";
-}
+    <script>
+        // Simple client-side cart simulation
+        let cart = [];
 
-loadProducts();
-</script>
+        function addToCart(productName) {
+            cart.push(productName);
+            updateCartDisplay();
+            alert(productName + " added to cart!");
+        }
 
+        function updateCartDisplay() {
+            const checkoutLink = document.querySelector('a[href="payment.html"]');
+            checkoutLink.textContent = `Proceed to Checkout (${cart.length} Items)`;
+            // In a real app, you would save 'cart' to localStorage or a session.
+            // For this simulation, we'll store it globally for the next page.
+            localStorage.setItem('dairy_cart', JSON.stringify(cart));
+        }
+
+        // Initialize cart on load (optional)
+        updateCartDisplay();
+    </script>
 </body>
 </html>
