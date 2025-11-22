@@ -1,142 +1,248 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RWTSB1LS3E"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Dairy Farm Market — Fresh Dairy Direct</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%233fa43f'/%3E%3Ctext x='50' y='58' font-size='36' text-anchor='middle' fill='white' font-family='Arial'%3EDF%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --green:#3fa43f; --dark:#2f4f2f; --muted:#e9f7e9; --card:#ffffff;
+    --round:14px; --glass: rgba(255,255,255,0.6);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial; color:var(--dark);background:linear-gradient(180deg,#f3fff3 0%, #e9f7e9 100%);}
+  header{position:sticky;top:0;z-index:50;background:rgba(63,164,63,0.95);backdrop-filter: blur(6px);display:flex;align-items:center;justify-content:space-between;padding:12px 20px;color:white}
+  .brand{display:flex;gap:12px;align-items:center;font-weight:700}
+  .brand .logo{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,#6bd36b,#2f8f2f);display:flex;align-items:center;justify-content:center;box-shadow:0 6px 18px rgba(47,79,47,0.18)}
+  nav{display:flex;gap:14px;align-items:center}
+  nav a{color:rgba(255,255,255,0.95);text-decoration:none;padding:8px 12px;border-radius:10px;font-weight:600}
+  nav a:hover{background:rgba(0,0,0,0.08)}
+  .hero{min-height:120vh;display:flex;align-items:center;padding:40px 6vw;gap:40px}
+  .hero-left{flex:1;max-width:760px}
+  .eyebrow{background:var(--glass);display:inline-block;padding:6px 10px;border-radius:999px;font-weight:700;color:var(--dark);margin-bottom:18px}
+  h1{font-size:48px;margin:8px 0 12px;line-height:1.03}
+  p.lead{font-size:18px;color:#264f26;margin-bottom:18px}
+  .cta-row{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{background:var(--green);color:white;padding:12px 18px;border-radius:12px;text-decoration:none;font-weight:700;display:inline-flex;align-items:center;gap:10px;border:none;cursor:pointer}
+  .btn.ghost{background:transparent;border:2px solid rgba(255,255,255,0.12);}
+  .hero-right{flex:1;display:flex;justify-content:center;align-items:center}
+  /* animated farm illustration */
+  .farm-card{width:100%;max-width:540px;border-radius:20px;padding:18px;background:linear-gradient(180deg, rgba(255,255,255,0.9), rgba(255,255,255,0.8));box-shadow:0 10px 40px rgba(47,79,47,0.12);}
+  .farm-scene{position:relative;height:360px;border-radius:12px;overflow:hidden;background:linear-gradient(180deg,#87d787,#c5f3c5);}
+  .sun{position:absolute;right:18px;top:18px;width:96px;height:96px;border-radius:50%;background:radial-gradient(circle at 30% 30%, #fff59d, #ffd54f);box-shadow:0 12px 30px rgba(255, 200, 60,0.25);animation:float 12s ease-in-out infinite}
+  .cow{position:absolute;left:40px;bottom:26px;width:220px;height:auto;transform-origin:center;animation:walk 6s ease-in-out infinite}
+  .grass{position:absolute;left:0;right:0;bottom:0;height:90px;background:linear-gradient(90deg,#3fa43f,#2f8f2f);}
+  @keyframes float{0%{transform:translateY(0)}50%{transform:translateY(6px)}100%{transform:translateY(0)}}
+  @keyframes walk{0%{transform:translateX(0) }50%{transform:translateX(6px)}100%{transform:translateX(0)}}
 
-  gtag('config', 'G-RWTSB1LS3E');
-</script>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dairy Farm - Home</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #e9f7e9;
-      color: #2f4f2f;
-    }
-    header {
-      background: #3fa43f;
-      padding: 20px;
-      text-align: center;
-      color: white;
-      font-size: 28px;
-      font-weight: bold;
-    }
-    .hero {
-      background-image: url('https://images.unsplash.com/photo-1598514982620-2f0bbf3c161b');
-      background-size: cover;
-      background-position: center;
-      height: 70vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      position: relative;
-    }
-    .hero::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.3);
-    }
-    .hero-text {
-      position: relative;
-      color: white;
-      font-size: 40px;
-      text-align: center;
-      animation: fadeIn 2s ease-in-out;
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-    .section {
-      padding: 40px;
-      text-align: center;
-    }
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 20px;
-    }
-    .card {
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: 0.3s;
-    }
-    .card:hover {
-      transform: scale(1.05);
-    }
-    .card img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-    .card h3 {
-      padding: 15px;
-    }
-    .btn {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 12px 25px;
-      background: #3fa43f;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      font-size: 18px;
-      transition: 0.3s;
-    }
-    .btn:hover {
-      background: #2f7a2f;
-    }
-    footer {
-      background: #2d652d;
-      text-align: center;
-      padding: 15px;
-      color: white;
-      margin-top: 40px;
-    }
-  </style>
+  .section{padding:56px 6vw}
+  .cards-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+  .card{background:var(--card);padding:14px;border-radius:12px;box-shadow:0 8px 24px rgba(47,79,47,0.06);display:flex;gap:12px;align-items:center}
+  .thumb{width:88px;height:88px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg, #fff, rgba(255,255,255,0.9));}
+  .thumb svg{width:68px;height:68px}
+  .meta h4{margin:0 0 6px;font-size:16px}
+  .meta small{color:#2e6b2e}
+  .price{margin-left:auto;font-weight:800;color:var(--green)}
+  .buy{margin-top:10px;display:inline-block;padding:8px 12px;border-radius:10px;background:var(--green);color:white;text-decoration:none;font-weight:700}
+
+  /* long page: add tall sections */
+  .tall{min-height:120vh}
+  .features{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+  .feature{background:linear-gradient(180deg,#fff,#f8fff8);padding:18px;border-radius:12px;box-shadow:0 8px 20px rgba(47,79,47,0.04)}
+
+  .footer{background:linear-gradient(180deg,#2d652d,#1f4b1f);color:white;padding:28px 6vw}
+  .footer .cols{display:flex;gap:24px;flex-wrap:wrap}
+  .small{font-size:13px;opacity:0.9}
+
+  /* responsive */
+  @media (max-width:900px){h1{font-size:36px}.hero{flex-direction:column;min-height:100vh;padding:36px 5vw}.farm-scene{height:260px}.sun{width:68px;height:68px}.cow{width:160px}}
+
+  /* utility */
+  .muted{color:#507a50}
+  .center{text-align:center}
+</style>
 </head>
 <body>
-  <header>Dairy Farm Fresh</header>
+<header>
+  <div class="brand">
+    <div class="logo" aria-hidden>DF</div>
+    <div>
+      <div style="font-size:16px">Dairy Farm Market</div>
+      <div style="font-size:12px;opacity:.9">Farm-fresh dairy delivered</div>
+    </div>
+  </div>
+  <nav>
+    <a href="#products">Products</a>
+    <a href="#story">Our Story</a>
+    <a href="#features">Why Us</a>
+    <a href="#contact">Contact</a>
+    <a class="btn" id="cartBtn">Cart 🧺 <span id="cartCount" style="margin-left:6px;font-weight:800">0</span></a>
+  </nav>
+</header>
 
-  <section class="hero">
-    <div class="hero-text">Pure • Organic • Farm Fresh</div>
-  </section>
+<section class="hero">
+  <div class="hero-left">
+    <div class="eyebrow">Organic • Local • Daily</div>
+    <h1>Buy Dairy Products Direct from Our Farm</h1>
+    <p class="lead">Fresh milk, ghee, butter, paneer, curds and artisan cheeses — delivered the same day. Scroll down to explore 30+ farm-made products.</p>
+    <div class="cta-row">
+      <button class="btn" onclick="document.getElementById('products').scrollIntoView({behavior:'smooth'})">Shop Products</button>
+      <a class="btn ghost" href="#story">Learn Our Story</a>
+    </div>
+    <div style="margin-top:18px;color:#2d6b2d;font-weight:700">Free delivery for orders above ₹500</div>
+  </div>
 
-  <section class="section">
-    <h2>Our Specialities</h2>
-    <div class="cards">
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1580910051074-3af719a8a3a2" />
-        <h3>Fresh Milk</h3>
-      </div>
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1600180758895-62c8f6c717af" />
-        <h3>Pure Ghee</h3>
-      </div>
-      <div class="card">
-        <img src="https://images.unsplash.com/photo-1582819509237-dace1fc5a1aa" />
-        <h3>Organic Butter</h3>
+  <div class="hero-right">
+    <div class="farm-card">
+      <div class="farm-scene">
+        <div class="sun"></div>
+        <!-- simple SVG cow (self-generated) -->
+        <svg class="cow" viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg" aria-hidden>
+          <g>
+            <rect x="10" y="40" width="120" height="50" rx="14" fill="#fff" stroke="#222" stroke-width="1" />
+            <circle cx="40" cy="40" r="18" fill="#fff" stroke="#222" stroke-width="1" />
+            <circle cx="26" cy="36" r="4" fill="#222" />
+            <circle cx="54" cy="36" r="4" fill="#222" />
+            <rect x="110" y="58" width="18" height="12" rx="6" fill="#fff" stroke="#222" stroke-width="1" />
+            <!-- spots -->
+            <ellipse cx="70" cy="60" rx="12" ry="8" fill="#2f4f2f" />
+            <ellipse cx="34" cy="58" rx="8" ry="6" fill="#2f4f2f" />
+            <!-- legs -->
+            <rect x="28" y="88" width="6" height="16" fill="#222" />
+            <rect x="58" y="88" width="6" height="16" fill="#222" />
+          </g>
+        </svg>
+        <div class="grass"></div>
       </div>
     </div>
-    <a href="product.html" class="btn">Explore Products</a>
-  </section>
+  </div>
+</section>
 
-  <footer>
-    © 2025 Dairy Farm Fresh. All Rights Reserved.
-  </footer>
+<section id="products" class="section tall">
+  <h2 class="center">Our Products — 30 Farm Fresh Items</h2>
+  <p class="center muted">Click <strong>Buy</strong> to place an order. Selected item will be carried to the payment page.</p>
+
+  <div class="cards-grid" id="productGrid"></div>
+</section>
+
+<section id="story" class="section">
+  <div style="max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:center">
+    <div>
+      <h3>Our Story</h3>
+      <p class="muted">We are a family-run dairy farm practicing regenerative grazing and humane animal care. From milking to packaging, everything happens on-site — which helps us keep the supply chain short and the taste fresh.</p>
+      <ul>
+        <li>Daily milk collection and cold-chain packed</li>
+        <li>Traditional clarified ghee, artisan cheeses</li>
+        <li>Small-batch, preservative-free processing</li>
+      </ul>
+    </div>
+    <div>
+      <img src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='600' height='340'><rect width='100%' height='100%' fill='%23e6ffee'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-size='30' fill='%232f4f2f' font-family='Arial'>Farm-to-table illustration</text></svg>" alt="farm illustration" style="width:100%;border-radius:12px;box-shadow:0 8px 20px rgba(0,0,0,0.08)" />
+    </div>
+  </div>
+</section>
+
+<section id="features" class="section">
+  <h3 class="center">Why choose Dairy Farm Market?</h3>
+  <div class="features" style="max-width:1100px;margin:18px auto 0">
+    <div class="feature"><strong>Traceable quality</strong><div class="small">QR-enabled batches so you can trace pack date & animal source.</div></div>
+    <div class="feature"><strong>Same-day delivery</strong><div class="small">Orders processed within hours of milking (local areas).</div></div>
+    <div class="feature"><strong>No preservatives</strong><div class="small">Short ingredient lists — natural taste.</div></div>
+    <div class="feature"><strong>Flexible payments</strong><div class="small">UPI, card, cash-on-delivery supported.</div></div>
+  </div>
+</section>
+
+<section id="contact" class="section">
+  <div style="max-width:900px;margin:0 auto;text-align:center">
+    <h3>Get in touch or place an order by phone</h3>
+    <p class="muted">Call us: <strong>+91 90000 00000</strong> or email <strong>orders@dairyfarm.example</strong></p>
+    <form id="contactForm" style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:18px">
+      <input placeholder="Your name" style="padding:12px;border-radius:10px;border:1px solid #cfeccc;min-width:220px">
+      <input placeholder="Phone or email" style="padding:12px;border-radius:10px;border:1px solid #cfeccc;min-width:220px">
+      <button class="btn" type="button">Send Message</button>
+    </form>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="cols">
+    <div style="flex:1;min-width:220px">
+      <h4>Dairy Farm Market</h4>
+      <div class="small">Fresh dairy delivered daily. © 2025</div>
+    </div>
+    <div style="flex:2;min-width:220px">
+      <div style="display:flex;gap:18px;flex-wrap:wrap">
+        <div class="small">Privacy</div><div class="small">Terms</div><div class="small">Returns</div>
+      </div>
+    </div>
+    <div style="min-width:220px;text-align:right">
+      <div class="small">Follow us</div>
+      <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:8px">
+        <div style="width:36px;height:36px;background:#fff;border-radius:8px;display:grid;place-items:center;color:var(--dark);font-weight:700">f</div>
+        <div style="width:36px;height:36px;background:#fff;border-radius:8px;display:grid;place-items:center;color:var(--dark);font-weight:700">I</div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+// generate 30 products with inline SVG thumbnails (self-generated images)
+const products = [];
+const names = [
+  'Fresh Cow Milk (1L)','Fresh Cow Milk (500ml)','A2 Milk (1L)','Desi Ghee (500g)','Desi Ghee (1kg)','Organic Butter (200g)','Organic Butter (500g)','Paneer (250g)','Paneer (500g)','Curd (500g)','Curd (1kg)','Strained Yogurt (200g)','Masala Paneer (250g)','Cottage Cheese Block','Fresh Cream (200ml)','Fresh Cream (500ml)','Raw Cream (250g)','Cottage Cheese Smoked','Homemade Cheese Slice','Cottage Cheese Spread','Buttermilk (500ml)','Lassi Sweet (400ml)','Lassi Salted (400ml)','Flavored Milk - Cardamom','Flavored Milk - Chocolate','Goat Milk (1L)','Sheep Milk (1L)','Artisan Cheddar (200g)','Ricotta (200g)','Kashmiri Ghee (250g)'
+];
+for(let i=0;i<30;i++){
+  products.push({id:i+1,name:names[i]||('Product '+(i+1)),price: [50,40,90,750,1400,120,280,80,150,60,110,90,160,220,95,140,180,200,340,150,45,55,55,60,120,200,400,240,720][i] || 99});
+}
+
+function svgThumb(i){
+  // create varied SVG with different accent colors based on index
+  const colors = ['ffefc1','d5f5d5','cdeef3','ffeecc','e7f7df','f8e6ff'];
+  const c = colors[i % colors.length];
+  const shape = ['cow','milk','butter','ghee','cheese'][i%5];
+  const text = encodeURIComponent(products[i].name.split(' ')[0]);
+  // simple SVG thumbnail using product initial and shape rectangles - self-generated
+  return `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><rect rx='18' width='100%' height='100%' fill='%23${c}'/><text x='50%' y='52%' text-anchor='middle' dominant-baseline='middle' font-size='14' fill='%232f4f2f' font-family='Arial'>${text}</text></svg>`;
+}
+
+const grid = document.getElementById('productGrid');
+products.forEach((p,i)=>{
+  const card = document.createElement('div'); card.className='card';
+  card.innerHTML = `
+    <div class='thumb'><img src='${svgThumb(i)}' alt='${p.name}' style='width:68px;height:68px;'/></div>
+    <div class='meta'>
+      <h4>${p.name}</h4>
+      <div class='small muted'>Farm batch #${1000+p.id} · Fresh</div>
+      <div style='margin-top:8px'><a class='buy' data-id='${p.id}' data-name='${encodeURIComponent(p.name)}' data-price='${p.price}'>Buy • ₹${p.price}</a></div>
+    </div>
+    <div class='price'>₹${p.price}</div>
+  `;
+  grid.appendChild(card);
+});
+
+// Buy button behavior: save to localStorage & go to payment page
+document.body.addEventListener('click', e=>{
+  const a = e.target.closest('a.buy');
+  if(!a) return;
+  const id = a.dataset.id; const name = decodeURIComponent(a.dataset.name); const price = a.dataset.price;
+  const order = {id, name, price, qty:1};
+  localStorage.setItem('df_order', JSON.stringify(order));
+  // increment cart count
+  let count = parseInt(localStorage.getItem('df_cart_count')||'0'); count++; localStorage.setItem('df_cart_count', count);
+  document.getElementById('cartCount').textContent = count;
+  // redirect to payment page
+  window.location.href = 'payment.html';
+});
+
+// restore cart count on load
+document.addEventListener('DOMContentLoaded', ()=>{
+  const c = localStorage.getItem('df_cart_count')||0; document.getElementById('cartCount').textContent=c;
+});
+
+// Cart button opens payment page
+document.getElementById('cartBtn').addEventListener('click', ()=>{ window.location.href='payment.html'; });
+
+</script>
 </body>
 </html>
