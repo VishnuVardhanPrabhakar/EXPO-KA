@@ -1,147 +1,250 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dairy Farm – Payment</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Poppins', sans-serif;
-      background: #f0fff0;
-      color: #2f6d2f;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Willow Creek Dairy</title>
+    <style>
+        :root {
+            --primary-color: #4CAF50;
+            --secondary-color: #FFC107;
+            --bg-light: #F9F9E0;
+            --text-dark: #2E4053;
+            --font-stack: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    header {
-      background: linear-gradient(#2f8f2f, #1f6d1f);
-      padding: 20px;
-      text-align: center;
-      font-size: 32px;
-      color: white;
-      font-weight: bold;
-    }
+        body {
+            font-family: var(--font-stack);
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
 
-    .container {
-      max-width: 650px;
-      margin: 40px auto;
-      background: white;
-      padding: 30px;
-      border-radius: 18px;
-      box-shadow: 0 0 20px rgba(0,0,0,0.1);
-      animation: fadeIn 0.8s ease;
-    }
+        header, footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+        }
+        
+        header {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
 
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
 
-    h2 {
-      margin-top: 0;
-      font-size: 26px;
-      text-align: center;
-    }
+        h2 {
+            text-align: center;
+            color: var(--primary-color);
+            margin-bottom: 30px;
+        }
 
-    .summary-box {
-      background: #e8ffe8;
-      padding: 20px;
-      border-radius: 12px;
-      margin-bottom: 25px;
-    }
+        .checkout-form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
 
-    .summary-box div {
-      font-size: 18px;
-      margin-bottom: 8px;
-    }
+        .checkout-form input[type="text"],
+        .checkout-form input[type="email"],
+        .checkout-form input[type="tel"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; /* Important for padding/width calculation */
+        }
+        
+        .checkout-form .grid {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .checkout-form .grid > div {
+            flex-grow: 1;
+        }
 
-    label {
-      font-size: 18px;
-      margin-bottom: 6px;
-      display: block;
-    }
+        .order-summary {
+            background-color: #E6F7E6; /* Light green background */
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+        
+        .order-summary h3 {
+            color: var(--text-dark);
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
 
-    input {
-      width: 100%;
-      padding: 14px;
-      border-radius: 10px;
-      border: 2px solid #2f8f2f;
-      margin-bottom: 18px;
-      font-size: 17px;
-    }
+        .place-order {
+            display: block;
+            width: 100%;
+            background-color: var(--secondary-color);
+            color: var(--text-dark);
+            border: none;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
 
-    button {
-      width: 100%;
-      padding: 14px 0;
-      border: none;
-      background: #2f8f2f;
-      color: white;
-      font-size: 20px;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    button:hover {
-      background: #256d25;
-    }
-
-    .product-img {
-      width: 80px;
-      height: 80px;
-      object-fit: contain;
-      display: block;
-      margin: 0 auto 10px auto;
-    }
-  </style>
+        .place-order:hover {
+            background-color: #FFD740;
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <h2>Secure Checkout</h2>
+    </header>
 
-<header>Checkout – Dairy Farm</header>
+    <div class="container">
+        
+        <form id="payment-form" class="checkout-form">
+            <h3>Shipping Information</h3>
+            <label for="name">Full Name</label>
+            <input type="text" id="name" name="name" required>
 
-<div class="container">
-  <h2>Order Summary</h2>
-  <div class="summary-box">
-    <img id="prodImg" class="product-img" src="" alt="Product">
-    <div><strong>Product:</strong> <span id="prodName"></span></div>
-    <div><strong>Price:</strong> <span id="prodPrice"></span></div>
-  </div>
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="address">Shipping Address</label>
+            <input type="text" id="address" name="address" required>
 
-  <h2>Enter Your Details</h2>
-  <label>Name</label>
-  <input type="text" id="custName" placeholder="Enter your name" />
+            <div class="grid">
+                <div>
+                    <label for="city">City</label>
+                    <input type="text" id="city" name="city" required>
+                </div>
+                <div>
+                    <label for="zip">Zip Code</label>
+                    <input type="text" id="zip" name="zip" required>
+                </div>
+            </div>
 
-  <label>Address</label>
-  <input type="text" id="custAddress" placeholder="Delivery address" />
+            <h3>Payment Details (Simulated)</h3>
+            <label for="card">Card Number</label>
+            <input type="text" id="card" name="card" placeholder="XXXX XXXX XXXX XXXX" required>
 
-  <label>Phone Number</label>
-  <input type="text" id="custPhone" placeholder="10-digit mobile number" />
+            <div class="grid">
+                <div>
+                    <label for="expiry">Expiry (MM/YY)</label>
+                    <input type="text" id="expiry" name="expiry" placeholder="01/26" required>
+                </div>
+                <div>
+                    <label for="cvv">CVV</label>
+                    <input type="text" id="cvv" name="cvv" placeholder="123" required>
+                </div>
+            </div>
+            
+            <div class="order-summary">
+                <h3>Order Summary</h3>
+                <ul id="cart-list">
+                    </ul>
+                <p><strong>Total: $<span id="total-price">0.00</span></strong></p>
+            </div>
 
-  <button onclick="placeOrder()">Place Order</button>
-</div>
+            <button type="submit" class="place-order">Place Order</button>
+        </form>
+    </div>
 
-<script>
-let product = JSON.parse(localStorage.getItem('selectedProduct'));
+    <footer>
+        <p>Your data is protected. Farm Fresh, Secure Payment.</p>
+    </footer>
 
-if(product){
-  document.getElementById('prodName').innerText = product.name;
-  document.getElementById('prodPrice').innerText = product.price;
-  document.getElementById('prodImg').src = product.img || 'https://www.svgrepo.com/show/522409/milk.svg';
-}
+    <script>
+        // Placeholder prices and item names (based on products.html)
+        const productPrices = {
+            'Whole Milk': 5.99,
+            'Cheddar Cheese': 12.50,
+            'Greek Yogurt': 4.25,
+            'Cultured Butter': 7.00
+            // Add more products here
+        };
 
-function placeOrder(){
-  const name = document.getElementById('custName').value.trim();
-  const address = document.getElementById('custAddress').value.trim();
-  const phone = document.getElementById('custPhone').value.trim();
+        function populateCart() {
+            const cartList = document.getElementById('cart-list');
+            const totalPriceSpan = document.getElementById('total-price');
+            let cart = [];
+            let total = 0;
 
-  if(name === '' || address === '' || phone === ''){
-    alert('Please fill out all fields');
-    return;
-  }
+            try {
+                // Retrieve cart from local storage
+                const storedCart = localStorage.getItem('dairy_cart');
+                if (storedCart) {
+                    cart = JSON.parse(storedCart);
+                }
+            } catch (e) {
+                console.error("Error retrieving cart from storage:", e);
+                cart = [];
+            }
+            
+            if (cart.length === 0) {
+                cartList.innerHTML = '<li>Your cart is empty. Please return to the <a href="products.html">products page</a>.</li>';
+                return;
+            }
 
-  localStorage.setItem('orderDetails', JSON.stringify({ name, address, phone, product }));
-  window.location.href = 'thankyou.html';
-}
-</script>
+            cartList.innerHTML = ''; // Clear previous items
 
+            cart.forEach(item => {
+                const price = productPrices[item] || 0.00;
+                total += price;
+                const listItem = document.createElement('li');
+                listItem.textContent = `${item} - $${price.toFixed(2)}`;
+                cartList.appendChild(listItem);
+            });
+
+            // Add simulated Shipping Fee
+            const shippingFee = 5.00;
+            total += shippingFee;
+            
+            const shippingItem = document.createElement('li');
+            shippingItem.textContent = `Shipping Fee - $${shippingFee.toFixed(2)}`;
+            shippingItem.style.borderTop = '1px dashed #aaa';
+            shippingItem.style.marginTop = '10px';
+            shippingItem.style.paddingTop = '10px';
+            cartList.appendChild(shippingItem);
+
+            totalPriceSpan.textContent = total.toFixed(2);
+        }
+
+        document.getElementById('payment-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Stop actual form submission
+
+            // Simple validation check
+            const name = document.getElementById('name').value;
+            if (name.trim() === '') {
+                alert('Please fill in your full name.');
+                return;
+            }
+
+            // Simulate a successful payment
+            alert('Payment successful! Redirecting to confirmation...');
+            
+            // Clear the cart after successful order simulation
+            localStorage.removeItem('dairy_cart'); 
+
+            // Redirect to the thank you page
+            window.location.href = 'thankyou.html';
+        });
+
+        // Populate the cart summary when the page loads
+        populateCart();
+    </script>
 </body>
 </html>
