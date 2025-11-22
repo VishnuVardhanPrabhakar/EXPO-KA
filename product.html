@@ -1,141 +1,182 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RWTSB1LS3E"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-RWTSB1LS3E');
-</script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dairy Farm - Products</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #e9f7e9;
-      color: #2f4f2f;
-    }
-    header {
-      background: #3fa43f;
-      padding: 20px;
-      text-align: center;
-      color: white;
-      font-size: 28px;
-      font-weight: bold;
-    }
-    .section {
-      padding: 40px;
-      text-align: center;
-    }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-      padding: 20px;
-    }
-    .item {
-      background: white;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      transition: 0.3s;
-    }
-    .item:hover {
-      transform: scale(1.05);
-    }
-    .item img {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-    }
-    .item h3 {
-      margin: 10px 0;
-    }
-    .price {
-      font-size: 18px;
-      color: #3fa43f;
-      margin-bottom: 15px;
-    }
-    .btn {
-      display: inline-block;
-      padding: 10px 20px;
-      background: #3fa43f;
-      color: white;
-      text-decoration: none;
-      border-radius: 8px;
-      margin-bottom: 15px;
-      transition: 0.3s;
-    }
-    .btn:hover { background: #2f7a2f; }
-    footer {
-      background: #2d652d;
-      color: white;
-      text-align: center;
-      padding: 15px;
-      margin-top: 40px;
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Dairy Farm Market — Products</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%233fa43f'/%3E%3Ctext x='50' y='58' font-size='36' text-anchor='middle' fill='white' font-family='Arial'%3EDF%3C/text%3E%3C/svg%3E">
+<style>
+:root{--green:#3fa43f;--dark:#274c27;--muted:#effaf0;--card:#fff}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,system-ui,Arial;background:linear-gradient(180deg,#f7fff7,#eaf9ea);color:var(--dark)}
+header{background:var(--green);color:white;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:40}
+.brand{display:flex;gap:12px;align-items:center}
+.logo{width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,#6bd36b,#2f8f2f);display:grid;place-items:center;font-weight:800;color:white}
+nav{display:flex;gap:10px}
+nav a{color:white;text-decoration:none;font-weight:700}
+.container{max-width:1200px;margin:28px auto;padding:0 18px}
+.toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
+.search{flex:1;margin-right:12px}
+input.search{width:100%;padding:12px;border-radius:12px;border:1px solid #d7f0d7}
+.controls{display:flex;gap:10px}
+.btn{background:var(--green);color:white;padding:10px 14px;border-radius:10px;text-decoration:none;border:none;font-weight:700;cursor:pointer}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
+.card{background:var(--card);padding:12px;border-radius:12px;box-shadow:0 10px 26px rgba(47,79,47,0.06);display:flex;flex-direction:column}
+.thumb{height:140px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,#fff,#f6fff6);overflow:hidden}
+.thumb img{width:84px;height:84px}
+.meta{padding:10px 6px;flex:1}
+.meta h4{margin:0 0 6px;font-size:16px}
+.price{font-weight:800;color:var(--green);margin-top:8px}
+.card .actions{display:flex;gap:8px;margin-top:10px}
+.small{font-size:13px;color:#4b7a4b}
+.footer{margin:28px 0 70px;text-align:center;color:#427a42}
+.empty{opacity:0.8;padding:28px;border-radius:12px;background:linear-gradient(180deg,#f8fff8,#f0fff0)}
+@media(max-width:700px){.toolbar{flex-direction:column;align-items:stretch}.controls{width:100%;justify-content:space-between}}
+</style>
 </head>
 <body>
-  <header>Dairy Farm - Products</header>
-
-  <section class="section">
-    <h2>Our Dairy Products</h2>
-    <div class="grid">
-
-      <div class="item">
-        <img src="https://images.unsplash.com/photo-1580910051074-3af719a8a3a2" />
-        <h3>Fresh Cow Milk</h3>
-        <div class="price">₹50 / Litre</div>
-        <a href="payment.html" class="btn">Buy Now</a>
-      </div>
-
-      <div class="item">
-        <img src="https://images.unsplash.com/photo-1600180758895-62c8f6c717af" />
-        <h3>Pure Desi Ghee</h3>
-        <div class="price">₹750 / Kg</div>
-        <a href="payment.html" class="btn">Buy Now</a>
-      </div>
-
-      <div class="item">
-        <img src="https://images.unsplash.com/photo-1582819509237-dace1fc5a1aa" />
-        <h3>Organic Butter</h3>
-        <div class="price">₹420 / Kg</div>
-        <a href="payment.html" class="btn">Buy Now</a>
-      </div>
-
-      <div class="item">
-        <img src="https://images.unsplash.com/photo-1560807707-8cc77767d783" />
-        <h3>Curd</h3>
-        <div class="price">₹60 / Kg</div>
-        <a href="payment.html" class="btn">Buy Now</a>
-      </div>
-
-      <div class="item">
-        <img src="https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2" />
-        <h3>Paneer (Cottage Cheese)</h3>
-        <div class="price">₹280 / Kg</div>
-        <a href="payment.html" class="btn">Buy Now</a>
-      </div>
-
-      <div class="item">
-        <img src="https://images.unsplash.com/photo-1508737027454-e6454ef45afd" />
-        <h3>Cheese</h3>
-        <div class="price">₹350 / Kg</div>
-        <a href="payment.html" class="btn">Buy Now</a>
-      </div>
-
+<header>
+  <div class="brand">
+    <div class="logo">DF</div>
+    <div style="line-height:1">
+      <div style="font-weight:800">Dairy Farm Market</div>
+      <div style="font-size:12px;opacity:.9">Products</div>
     </div>
+  </div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="#products">Products</a>
+    <a id="viewCart" class="btn" style="background:#2f7a2f">View Cart (<span id="cartCount">0</span>)</a>
+  </nav>
+</header>
+
+<main class="container">
+  <div class="toolbar">
+    <div class="search"><input class="search" id="q" placeholder="Search products (e.g., milk, ghee, paneer)"/></div>
+    <div class="controls">
+      <button class="btn" id="filterFresh">Fresh</button>
+      <button class="btn" id="filterGhee">Ghee & Butter</button>
+    </div>
+  </div>
+
+  <section id="products">
+    <div class="grid" id="grid"></div>
   </section>
 
-  <footer>
-    © 2025 Dairy Farm Fresh. All Rights Reserved.
-  </footer>
+  <div class="footer">
+    <div class="small">Showing farm-made products — click Buy to add one item to cart and proceed to payment.</div>
+  </div>
+</main>
 
+<script>
+// Build 30+ products (self-generated SVG thumbnails)
+const raw = [
+  {name:'Fresh Cow Milk 1L',price:50,cat:'milk'},
+  {name:'Fresh Cow Milk 500ml',price:30,cat:'milk'},
+  {name:'A2 Milk 1L',price:90,cat:'milk'},
+  {name:'Desi Ghee 250g',price:380,cat:'ghee'},
+  {name:'Desi Ghee 500g',price:750,cat:'ghee'},
+  {name:'Organic Butter 200g',price:120,cat:'butter'},
+  {name:'Organic Butter 500g',price:280,cat:'butter'},
+  {name:'Paneer 250g',price:80,cat:'paneer'},
+  {name:'Paneer 500g',price:150,cat:'paneer'},
+  {name:'Curd 500g',price:60,cat:'curd'},
+  {name:'Curd 1kg',price:110,cat:'curd'},
+  {name:'Strained Yoghurt 200g',price:90,cat:'yoghurt'},
+  {name:'Masala Paneer 250g',price:160,cat:'paneer'},
+  {name:'Cottage Cheese Block 400g',price:220,cat:'cheese'},
+  {name:'Fresh Cream 200ml',price:95,cat:'cream'},
+  {name:'Fresh Cream 500ml',price:140,cat:'cream'},
+  {name:'Raw Cream 250g',price:180,cat:'cream'},
+  {name:'Smoked Cottage Cheese 200g',price:200,cat:'cheese'},
+  {name:'Artisan Cheese Slice 150g',price:340,cat:'cheese'},
+  {name:'Cottage Spread 200g',price:150,cat:'spread'},
+  {name:'Buttermilk 500ml',price:45,cat:'beverage'},
+  {name:'Lassi Sweet 400ml',price:55,cat:'beverage'},
+  {name:'Lassi Salted 400ml',price:55,cat:'beverage'},
+  {name:'Cardamom Milk 500ml',price:60,cat:'flavored'},
+  {name:'Chocolate Milk 500ml',price:60,cat:'flavored'},
+  {name:'Goat Milk 1L',price:120,cat:'milk'},
+  {name:'Sheep Milk 1L',price:200,cat:'milk'},
+  {name:'Artisan Cheddar 200g',price:400,cat:'cheese'},
+  {name:'Ricotta 200g',price:240,cat:'cheese'},
+  {name:'Kashmiri Ghee 250g',price:720,cat:'ghee'},
+  {name:'Smoked Butter 200g',price:330,cat:'butter'},
+  {name:'Masala Lassi 400ml',price:65,cat:'beverage'},
+  {name:'Paneer Sticks 300g',price:190,cat:'paneer'}
+];
+
+// helper to create simple SVG thumb as data URI
+function svgThumb(label, idx){
+  const colors = ['cfead0','f6efd6','e6f7ff','fff6e6','f0f8f1','f7eaf7'];
+  const bg = colors[idx % colors.length];
+  const t = encodeURIComponent(label.replace(/'/g,'').slice(0,18));
+  return `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='280' height='180'><rect rx='12' width='100%' height='100%' fill='%23${bg}'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='18' fill='%232f4f2f'>${t}</text></svg>`;
+}
+
+const grid = document.getElementById('grid');
+raw.forEach((p,i)=>{
+  const card = document.createElement('div'); card.className='card';
+  card.innerHTML = `
+    <div class="thumb"><img src="${svgThumb(p.name,i)}" alt="${p.name}"/></div>
+    <div class="meta">
+      <h4>${p.name}</h4>
+      <div class="small">Batch #${3000+i} · Fresh from our farm</div>
+      <div class="price">₹${p.price}</div>
+      <div class="actions"><button class="btn buy" data-i='${i}'>Buy</button><button class="btn" onclick="quickView(${i})" style="background:#6bd36b">Quick View</button></div>
+    </div>
+  `;
+  grid.appendChild(card);
+});
+
+// Cart handling (allow multiple items)
+function getCart(){return JSON.parse(localStorage.getItem('df_cart')||'[]');}
+function setCart(c){localStorage.setItem('df_cart',JSON.stringify(c));updateCartCount();}
+function updateCartCount(){const c=getCart();document.getElementById('cartCount').textContent=c.reduce((s,it)=>s+it.qty,0);} 
+
+// Buy button behavior
+document.body.addEventListener('click', e=>{
+  if(e.target.classList.contains('buy')){
+    const idx = parseInt(e.target.dataset.i);
+    const prod = raw[idx];
+    const cart = getCart();
+    const exist = cart.find(x=>x.name===prod.name);
+    if(exist) exist.qty += 1; else cart.push({name:prod.name,price:prod.price,qty:1});
+    setCart(cart);
+    // animate feedback
+    e.target.textContent='Added ✓'; setTimeout(()=>e.target.textContent='Buy',900);
+  }
+});
+
+// Quick view shows a simple modal (native alert fallback)
+function quickView(i){
+  const p = raw[i];
+  const ok = confirm(`${p.name} — ₹${p.price}\n\nAdd to cart?`);
+  if(ok){ const cart = getCart(); const exist = cart.find(x=>x.name===p.name); if(exist) exist.qty++; else cart.push({name:p.name,price:p.price,qty:1}); setCart(cart);} 
+}
+
+// filters/search
+document.getElementById('q').addEventListener('input', e=>{
+  const v = e.target.value.toLowerCase(); Array.from(grid.children).forEach((card,idx)=>{
+    const name = raw[idx].name.toLowerCase(); card.style.display = name.includes(v)?'flex':'none';
+  });
+});
+
+document.getElementById('filterFresh').addEventListener('click', ()=>{
+  // show first 10 milk/curd items as fresh
+  Array.from(grid.children).forEach((card,idx)=>{ const cat = raw[idx].cat; card.style.display = ['milk','curd','yoghurt','beverage'].includes(cat)?'flex':'none';});
+});
+
+document.getElementById('filterGhee').addEventListener('click', ()=>{
+  Array.from(grid.children).forEach((card,idx)=>{ const cat = raw[idx].cat; card.style.display = ['ghee','butter'].includes(cat)?'flex':'none';});
+});
+
+// View cart button
+document.getElementById('viewCart').addEventListener('click', ()=>{ window.location.href='payment.html'; });
+
+// initialize count
+updateCartCount();
+
+</script>
 </body>
 </html>
