@@ -1,182 +1,156 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Dairy Farm Market — Products</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%233fa43f'/%3E%3Ctext x='50' y='58' font-size='36' text-anchor='middle' fill='white' font-family='Arial'%3EDF%3C/text%3E%3C/svg%3E">
-<style>
-:root{--green:#3fa43f;--dark:#274c27;--muted:#effaf0;--card:#fff}
-*{box-sizing:border-box}
-body{margin:0;font-family:Inter,system-ui,Arial;background:linear-gradient(180deg,#f7fff7,#eaf9ea);color:var(--dark)}
-header{background:var(--green);color:white;padding:14px 18px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:40}
-.brand{display:flex;gap:12px;align-items:center}
-.logo{width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,#6bd36b,#2f8f2f);display:grid;place-items:center;font-weight:800;color:white}
-nav{display:flex;gap:10px}
-nav a{color:white;text-decoration:none;font-weight:700}
-.container{max-width:1200px;margin:28px auto;padding:0 18px}
-.toolbar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px}
-.search{flex:1;margin-right:12px}
-input.search{width:100%;padding:12px;border-radius:12px;border:1px solid #d7f0d7}
-.controls{display:flex;gap:10px}
-.btn{background:var(--green);color:white;padding:10px 14px;border-radius:10px;text-decoration:none;border:none;font-weight:700;cursor:pointer}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px}
-.card{background:var(--card);padding:12px;border-radius:12px;box-shadow:0 10px 26px rgba(47,79,47,0.06);display:flex;flex-direction:column}
-.thumb{height:140px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(135deg,#fff,#f6fff6);overflow:hidden}
-.thumb img{width:84px;height:84px}
-.meta{padding:10px 6px;flex:1}
-.meta h4{margin:0 0 6px;font-size:16px}
-.price{font-weight:800;color:var(--green);margin-top:8px}
-.card .actions{display:flex;gap:8px;margin-top:10px}
-.small{font-size:13px;color:#4b7a4b}
-.footer{margin:28px 0 70px;text-align:center;color:#427a42}
-.empty{opacity:0.8;padding:28px;border-radius:12px;background:linear-gradient(180deg,#f8fff8,#f0fff0)}
-@media(max-width:700px){.toolbar{flex-direction:column;align-items:stretch}.controls{width:100%;justify-content:space-between}}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dairy Farm - Products</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #f2fff2;
+      color: #2f6d2f;
+    }
+
+    header {
+      background: linear-gradient(#2f8f2f, #1f6d1f);
+      padding: 20px;
+      text-align: center;
+      color: white;
+      font-size: 30px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .container {
+      padding: 30px;
+      max-width: 1300px;
+      margin: auto;
+    }
+
+    .search-bar {
+      width: 100%;
+      padding: 15px;
+      border: 2px solid #2f8f2f;
+      border-radius: 10px;
+      margin-bottom: 25px;
+      font-size: 18px;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+      transition: 0.3s;
+      animation: fadeIn 0.8s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 12px;
+      background: #eaffea;
+    }
+
+    .title {
+      font-size: 22px;
+      font-weight: bold;
+      margin: 12px 0 5px 0;
+    }
+
+    .price {
+      font-size: 18px;
+      margin-bottom: 15px;
+      font-weight: 500;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px 0;
+      border: none;
+      background: #2f8f2f;
+      color: white;
+      font-size: 17px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #256d25;
+    }
+  </style>
 </head>
 <body>
-<header>
-  <div class="brand">
-    <div class="logo">DF</div>
-    <div style="line-height:1">
-      <div style="font-weight:800">Dairy Farm Market</div>
-      <div style="font-size:12px;opacity:.9">Products</div>
-    </div>
-  </div>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="#products">Products</a>
-    <a id="viewCart" class="btn" style="background:#2f7a2f">View Cart (<span id="cartCount">0</span>)</a>
-  </nav>
-</header>
 
-<main class="container">
-  <div class="toolbar">
-    <div class="search"><input class="search" id="q" placeholder="Search products (e.g., milk, ghee, paneer)"/></div>
-    <div class="controls">
-      <button class="btn" id="filterFresh">Fresh</button>
-      <button class="btn" id="filterGhee">Ghee & Butter</button>
-    </div>
-  </div>
+<header>Dairy Farm – Fresh & Organic Products</header>
 
-  <section id="products">
-    <div class="grid" id="grid"></div>
-  </section>
+<div class="container">
 
-  <div class="footer">
-    <div class="small">Showing farm-made products — click Buy to add one item to cart and proceed to payment.</div>
-  </div>
-</main>
+  <input type="text" placeholder="Search products..." class="search-bar" onkeyup="searchProducts()" />
+
+  <div class="products-grid" id="productList"></div>
+
+</div>
 
 <script>
-// Build 30+ products (self-generated SVG thumbnails)
-const raw = [
-  {name:'Fresh Cow Milk 1L',price:50,cat:'milk'},
-  {name:'Fresh Cow Milk 500ml',price:30,cat:'milk'},
-  {name:'A2 Milk 1L',price:90,cat:'milk'},
-  {name:'Desi Ghee 250g',price:380,cat:'ghee'},
-  {name:'Desi Ghee 500g',price:750,cat:'ghee'},
-  {name:'Organic Butter 200g',price:120,cat:'butter'},
-  {name:'Organic Butter 500g',price:280,cat:'butter'},
-  {name:'Paneer 250g',price:80,cat:'paneer'},
-  {name:'Paneer 500g',price:150,cat:'paneer'},
-  {name:'Curd 500g',price:60,cat:'curd'},
-  {name:'Curd 1kg',price:110,cat:'curd'},
-  {name:'Strained Yoghurt 200g',price:90,cat:'yoghurt'},
-  {name:'Masala Paneer 250g',price:160,cat:'paneer'},
-  {name:'Cottage Cheese Block 400g',price:220,cat:'cheese'},
-  {name:'Fresh Cream 200ml',price:95,cat:'cream'},
-  {name:'Fresh Cream 500ml',price:140,cat:'cream'},
-  {name:'Raw Cream 250g',price:180,cat:'cream'},
-  {name:'Smoked Cottage Cheese 200g',price:200,cat:'cheese'},
-  {name:'Artisan Cheese Slice 150g',price:340,cat:'cheese'},
-  {name:'Cottage Spread 200g',price:150,cat:'spread'},
-  {name:'Buttermilk 500ml',price:45,cat:'beverage'},
-  {name:'Lassi Sweet 400ml',price:55,cat:'beverage'},
-  {name:'Lassi Salted 400ml',price:55,cat:'beverage'},
-  {name:'Cardamom Milk 500ml',price:60,cat:'flavored'},
-  {name:'Chocolate Milk 500ml',price:60,cat:'flavored'},
-  {name:'Goat Milk 1L',price:120,cat:'milk'},
-  {name:'Sheep Milk 1L',price:200,cat:'milk'},
-  {name:'Artisan Cheddar 200g',price:400,cat:'cheese'},
-  {name:'Ricotta 200g',price:240,cat:'cheese'},
-  {name:'Kashmiri Ghee 250g',price:720,cat:'ghee'},
-  {name:'Smoked Butter 200g',price:330,cat:'butter'},
-  {name:'Masala Lassi 400ml',price:65,cat:'beverage'},
-  {name:'Paneer Sticks 300g',price:190,cat:'paneer'}
+const products = [
+  { name: "Organic Cow Milk", price: "₹55/L", img: "https://www.svgrepo.com/show/522409/milk.svg" },
+  { name: "Buffalo Milk", price: "₹65/L", img: "https://www.svgrepo.com/show/522409/milk.svg" },
+  { name: "Full Cream Milk", price: "₹60/L", img: "https://www.svgrepo.com/show/157880/milk.svg" },
+  { name: "Skimmed Milk", price: "₹45/L", img: "https://www.svgrepo.com/show/496492/milk-carton.svg" },
+  { name: "Curd (Dahi)", price: "₹80/kg", img: "https://www.svgrepo.com/show/510967/bowl.svg" },
+  { name: "Ghee", price: "₹520/kg", img: "https://www.svgrepo.com/show/381308/butter.svg" },
+  { name: "Butter", price: "₹420/kg", img: "https://www.svgrepo.com/show/353851/butter.svg" },
+  { name: "Paneer", price: "₹380/kg", img: "https://www.svgrepo.com/show/474222/cheese.svg" },
+  { name: "Flavoured Milk", price: "₹35", img: "https://www.svgrepo.com/show/522409/milk.svg" },
+  { name: "Cheese", price: "₹420/kg", img: "https://www.svgrepo.com/show/474222/cheese.svg" }
 ];
 
-// helper to create simple SVG thumb as data URI
-function svgThumb(label, idx){
-  const colors = ['cfead0','f6efd6','e6f7ff','fff6e6','f0f8f1','f7eaf7'];
-  const bg = colors[idx % colors.length];
-  const t = encodeURIComponent(label.replace(/'/g,'').slice(0,18));
-  return `data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='280' height='180'><rect rx='12' width='100%' height='100%' fill='%23${bg}'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' font-family='Arial' font-size='18' fill='%232f4f2f'>${t}</text></svg>`;
-}
-
-const grid = document.getElementById('grid');
-raw.forEach((p,i)=>{
-  const card = document.createElement('div'); card.className='card';
-  card.innerHTML = `
-    <div class="thumb"><img src="${svgThumb(p.name,i)}" alt="${p.name}"/></div>
-    <div class="meta">
-      <h4>${p.name}</h4>
-      <div class="small">Batch #${3000+i} · Fresh from our farm</div>
-      <div class="price">₹${p.price}</div>
-      <div class="actions"><button class="btn buy" data-i='${i}'>Buy</button><button class="btn" onclick="quickView(${i})" style="background:#6bd36b">Quick View</button></div>
+function loadProducts() {
+  const grid = document.getElementById("productList");
+  grid.innerHTML = products.map(p => `
+    <div class='card'>
+      <img src='${p.img}' alt='${p.name}' />
+      <div class='title'>${p.name}</div>
+      <div class='price'>${p.price}</div>
+      <button onclick="buy('${p.name}', '${p.price}')">Buy Now</button>
     </div>
-  `;
-  grid.appendChild(card);
-});
-
-// Cart handling (allow multiple items)
-function getCart(){return JSON.parse(localStorage.getItem('df_cart')||'[]');}
-function setCart(c){localStorage.setItem('df_cart',JSON.stringify(c));updateCartCount();}
-function updateCartCount(){const c=getCart();document.getElementById('cartCount').textContent=c.reduce((s,it)=>s+it.qty,0);} 
-
-// Buy button behavior
-document.body.addEventListener('click', e=>{
-  if(e.target.classList.contains('buy')){
-    const idx = parseInt(e.target.dataset.i);
-    const prod = raw[idx];
-    const cart = getCart();
-    const exist = cart.find(x=>x.name===prod.name);
-    if(exist) exist.qty += 1; else cart.push({name:prod.name,price:prod.price,qty:1});
-    setCart(cart);
-    // animate feedback
-    e.target.textContent='Added ✓'; setTimeout(()=>e.target.textContent='Buy',900);
-  }
-});
-
-// Quick view shows a simple modal (native alert fallback)
-function quickView(i){
-  const p = raw[i];
-  const ok = confirm(`${p.name} — ₹${p.price}\n\nAdd to cart?`);
-  if(ok){ const cart = getCart(); const exist = cart.find(x=>x.name===p.name); if(exist) exist.qty++; else cart.push({name:p.name,price:p.price,qty:1}); setCart(cart);} 
+  `).join('');
 }
 
-// filters/search
-document.getElementById('q').addEventListener('input', e=>{
-  const v = e.target.value.toLowerCase(); Array.from(grid.children).forEach((card,idx)=>{
-    const name = raw[idx].name.toLowerCase(); card.style.display = name.includes(v)?'flex':'none';
+function searchProducts() {
+  const term = document.querySelector('.search-bar').value.toLowerCase();
+  document.querySelectorAll('.card').forEach(card => {
+    card.style.display = card.innerText.toLowerCase().includes(term) ? 'block' : 'none';
   });
-});
+}
 
-document.getElementById('filterFresh').addEventListener('click', ()=>{
-  // show first 10 milk/curd items as fresh
-  Array.from(grid.children).forEach((card,idx)=>{ const cat = raw[idx].cat; card.style.display = ['milk','curd','yoghurt','beverage'].includes(cat)?'flex':'none';});
-});
+function buy(name, price) {
+  localStorage.setItem("selectedProduct", JSON.stringify({ name, price }));
+  window.location.href = "payment.html";
+}
 
-document.getElementById('filterGhee').addEventListener('click', ()=>{
-  Array.from(grid.children).forEach((card,idx)=>{ const cat = raw[idx].cat; card.style.display = ['ghee','butter'].includes(cat)?'flex':'none';});
-});
-
-// View cart button
-document.getElementById('viewCart').addEventListener('click', ()=>{ window.location.href='payment.html'; });
-
-// initialize count
-updateCartCount();
-
+loadProducts();
 </script>
+
 </body>
 </html>
