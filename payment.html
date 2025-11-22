@@ -1,106 +1,48 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-RWTSB1LS3E"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-RWTSB1LS3E');
-</script>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dairy Farm - Payment</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: #e9f7e9;
-      color: #2f4f2f;
-    }
-    header {
-      background: #3fa43f;
-      padding: 20px;
-      text-align: center;
-      color: white;
-      font-size: 28px;
-      font-weight: bold;
-    }
-    .container {
-      max-width: 600px;
-      margin: 40px auto;
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-    h2 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-    label {
-      font-size: 16px;
-      font-weight: bold;
-    }
-    input, select {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border-radius: 8px;
-      border: 1px solid #bbb;
-      font-size: 16px;
-    }
-    .btn {
-      width: 100%;
-      padding: 14px;
-      background: #3fa43f;
-      color: white;
-      border: none;
-      border-radius: 8px;
-      font-size: 18px;
-      cursor: pointer;
-      margin-top: 10px;
-      transition: 0.3s;
-    }
-    .btn:hover { background: #2f7a2f; }
-    footer {
-      background: #2d652d;
-      color: white;
-      text-align: center;
-      padding: 15px;
-      margin-top: 40px;
-    }
-  </style>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Dairy Farm Market — Payment</title>
+<style>
+:root{--green:#3fa43f;--dark:#274c27;--muted:#eaf9ea;--card:#fff}
+*{box-sizing:border-box}
+body{margin:0;font-family:Inter,Arial;background:var(--muted);color:var(--dark)}
+header{background:var(--green);color:white;padding:16px 20px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-size:22px;font-weight:800}
+.container{max-width:900px;margin:34px auto;background:white;padding:30px;border-radius:16px;box-shadow:0 10px 28px rgba(0,0,0,0.08)}
+h2{text-align:center;margin:0 0 20px;font-size:26px}
+.cart-item{display:flex;justify-content:space-between;background:#f7fff7;padding:14px;border-radius:12px;margin-bottom:12px;border:1px solid #d8f0d8}
+.cart-item div{font-size:16px}
+.total{font-size:22px;font-weight:800;color:var(--green);text-align:right;margin-top:20px}
+form{margin-top:30px}
+label{font-weight:700;display:block;margin-top:14px}
+input,select{width:100%;padding:12px;margin-top:6px;border-radius:10px;border:1px solid #ccc;font-size:15px}
+.btn{width:100%;margin-top:26px;padding:14px;background:var(--green);color:white;font-size:18px;border:none;border-radius:12px;font-weight:700;cursor:pointer}
+.btn:hover{background:#2f7a2f}
+.empty{text-align:center;padding:30px;font-size:18px;color:#3a6a3a}
+</style>
 </head>
 <body>
-
-<header>Payment Page</header>
+<header>
+  <div class="brand">Dairy Farm — Checkout</div>
+  <a href="product.html" style="color:white;text-decoration:none;font-weight:600;font-size:16px">Back to Products</a>
+</header>
 
 <div class="container">
-  <h2>Complete Your Order</h2>
+  <h2>Your Cart</h2>
+  <div id="cartList"></div>
+  <div class="total" id="total"></div>
 
-  <form action="thankyou.html">
+  <form id="payForm" action="thankyou.html">
     <label>Full Name</label>
-    <input type="text" required placeholder="Enter your name">
+    <input required placeholder="Enter your name" />
 
     <label>Phone Number</label>
-    <input type="text" required placeholder="Enter mobile number">
-
-    <label>Select Product</label>
-    <select required>
-      <option value="">Choose Product</option>
-      <option>Fresh Cow Milk - ₹50</option>
-      <option>Pure Ghee - ₹750</option>
-      <option>Organic Butter - ₹420</option>
-      <option>Curd - ₹60</option>
-      <option>Paneer - ₹280</option>
-      <option>Cheese - ₹350</option>
-    </select>
+    <input required placeholder="Enter mobile number" />
 
     <label>Address</label>
-    <input type="text" required placeholder="Enter delivery address">
+    <input required placeholder="Enter delivery address" />
 
     <label>Payment Method</label>
     <select required>
@@ -110,13 +52,30 @@
       <option>Card Payment</option>
     </select>
 
-    <button class="btn" type="submit">Proceed to Pay</button>
+    <button class="btn">Place Order</button>
   </form>
 </div>
 
-<footer>
-  © 2025 Dairy Farm Fresh. All Rights Reserved.
-</footer>
+<script>
+function getCart(){return JSON.parse(localStorage.getItem('df_cart')||'[]');}
+function renderCart(){
+  const cart=getCart();
+  const list=document.getElementById('cartList');
+  const total=document.getElementById('total');
+  list.innerHTML="";
+  if(cart.length===0){ list.innerHTML='<div class="empty">Your cart is empty.</div>'; total.textContent=''; return; }
+  let sum=0;
+  cart.forEach(item=>{
+    sum+=item.price*item.qty;
+    const div=document.createElement('div');
+    div.className='cart-item';
+    div.innerHTML=`<div>${item.name} (x${item.qty})</div><div>₹${item.price*item.qty}</div>`;
+    list.appendChild(div);
+  });
+  total.textContent='Total: ₹'+sum;
+}
+renderCart();
+</script>
 
 </body>
 </html>
