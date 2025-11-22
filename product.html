@@ -3,41 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Products - Willow Creek Dairy</title>
+    <title>Shop Our Dairy Products - Willow Creek Dairy</title>
     <style>
         :root {
-            --primary-color: #4CAF50;
-            --secondary-color: #FFC107;
-            --bg-light: #F9F9E0;
-            --text-dark: #2E4053;
-            --font-stack: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --primary-color: #0E2943;
+            --secondary-color: #E67E22;
+            --text-light: #F8F8F8;
+            --bg-main: #FFFFFF;
+            --bg-accent: #F4F4F4;
+            --font-stack: 'Helvetica Neue', Arial, sans-serif;
         }
 
         body {
             font-family: var(--font-stack);
             margin: 0;
             padding: 0;
-            background-color: var(--bg-light);
-            color: var(--text-dark);
+            background-color: var(--bg-main);
+            color: var(--primary-color);
             line-height: 1.6;
         }
 
-        header, footer {
-            background-color: var(--primary-color);
-            color: white;
-            padding: 20px 0;
-            text-align: center;
+        header {
+            background-color: var(--bg-main);
+            color: var(--primary-color);
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid var(--bg-accent);
         }
         
-        header {
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        .logo {
+            font-size: 1.8em;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
         }
 
         nav a {
-            color: white;
+            color: var(--primary-color);
             text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
+            margin-left: 30px;
+            font-weight: 500;
             transition: color 0.3s;
         }
 
@@ -47,66 +54,74 @@
 
         .container {
             max-width: 1200px;
-            margin: 20px auto;
+            margin: 40px auto;
             padding: 0 20px;
         }
 
         h2 {
             text-align: center;
             color: var(--primary-color);
-            margin-bottom: 30px;
+            margin-bottom: 50px;
+            font-size: 2.2em;
+            font-weight: 600;
         }
 
         .product-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
-            padding-bottom: 40px;
         }
 
         .product-card {
-            background-color: white;
-            border: 1px solid #E0E0C0;
-            border-radius: 10px;
+            background-color: var(--bg-main);
+            border: 1px solid var(--bg-accent);
+            border-radius: 8px;
             overflow: hidden;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-            text-align: center;
-            transition: transform 0.3s;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+            text-align: left;
+            transition: box-shadow 0.3s;
         }
 
         .product-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
         }
 
         .product-card img {
             width: 100%;
-            height: 200px;
+            height: 250px;
             object-fit: cover;
-            /* Placeholder for AI Generated Images */
+            /* Placeholder for AI Generated Product Images */
         }
 
         .product-info {
-            padding: 15px;
+            padding: 20px;
         }
 
         .product-info h3 {
-            color: var(--text-dark);
-            margin-top: 0;
+            color: var(--primary-color);
+            margin: 0 0 5px 0;
+            font-size: 1.4em;
+        }
+        
+        .product-info p {
+            font-size: 0.9em;
+            color: #777;
+            margin-bottom: 15px;
         }
 
         .price {
-            color: var(--primary-color);
-            font-size: 1.4em;
-            font-weight: bold;
-            margin: 10px 0;
+            color: var(--secondary-color);
+            font-size: 1.6em;
+            font-weight: 700;
+            margin-bottom: 15px;
         }
 
         .add-to-cart {
-            background-color: var(--secondary-color);
-            color: var(--text-dark);
+            width: 100%;
+            background-color: var(--primary-color);
+            color: var(--text-light);
             border: none;
-            padding: 10px 20px;
+            padding: 12px 20px;
             border-radius: 5px;
             cursor: pointer;
             font-weight: bold;
@@ -114,100 +129,169 @@
         }
 
         .add-to-cart:hover {
-            background-color: #FFD740;
+            background-color: #0A1C2B;
+        }
+        
+        /* Checkout Bar */
+        .checkout-bar {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            border-top: 1px solid var(--bg-accent);
+        }
+
+        .checkout-bar a {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--text-light);
+            padding: 15px 40px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        
+        .checkout-bar a:hover {
+            background-color: #D66C15;
+        }
+
+        footer {
+            background-color: var(--primary-color);
+            color: var(--text-light);
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 40px;
+        }
+
+        /* Responsiveness */
+        @media (max-width: 900px) {
+            header {
+                flex-direction: column;
+            }
+            nav {
+                margin-top: 15px;
+            }
+            nav a {
+                margin: 0 10px;
+            }
         }
     </style>
 </head>
 <body>
     <header>
+        <a href="index.html" class="logo">Willow Creek Dairy</a>
         <nav>
             <a href="index.html">Home</a>
-            <a href="products.html">Products</a>
-            <a href="#">About</a>
+            <a href="products.html">Shop</a>
+            <a href="#">Our Farm</a>
             <a href="#">Contact</a>
         </nav>
     </header>
 
     <div class="container">
-        <h2>Our Farm-Fresh Selection</h2>
+        <h2>Our Premium Organic Collection</h2>
         
         <div class="product-grid">
             
             <div class="product-card">
-                <img src="
-
-[Image of a glass bottle of organic milk]
-" alt="Organic Whole Milk">
+                <img src="" alt="Organic Whole Milk">
                 <div class="product-info">
-                    <h3>Organic Whole Milk (1 Gallon)</h3>
-                    <p>Creamy, unhomogenized, and absolutely delicious.</p>
+                    <h3>Organic Whole Milk</h3>
+                    <p>Creamy, fresh, and unhomogenized for maximum flavour.</p>
                     <div class="price">$5.99</div>
-                    <button class="add-to-cart" onclick="addToCart('Whole Milk')">Add to Cart</button>
+                    <button class="add-to-cart" onclick="addToCart('Whole Milk', 5.99)">Add to Cart</button>
                 </div>
             </div>
 
             <div class="product-card">
                 <img src="" alt="Artisan Cheddar">
                 <div class="product-info">
-                    <h3>Farmhouse Cheddar Cheese</h3>
-                    <p>Aged 6 months for a sharp, rich, buttery flavor.</p>
-                    <div class="price">$12.50</div>
-                    <button class="add-to-cart" onclick="addToCart('Cheddar Cheese')">Add to Cart</button>
+                    <h3>Artisan Cheddar (Aged)</h3>
+                    <p>Sharp, rich, and naturally aged for 12 months.</p>
+                    <div class="price">$14.99</div>
+                    <button class="add-to-cart" onclick="addToCart('Cheddar Cheese', 14.99)">Add to Cart</button>
                 </div>
             </div>
             
             <div class="product-card">
                 <img src="" alt="Plain Greek Yogurt">
                 <div class="product-info">
-                    <h3>Organic Plain Greek Yogurt</h3>
-                    <p>Thick, protein-rich, and naturally tangy.</p>
-                    <div class="price">$4.25</div>
-                    <button class="add-to-cart" onclick="addToCart('Greek Yogurt')">Add to Cart</button>
+                    <h3>High-Protein Greek Yogurt</h3>
+                    <p>Thick, strained, and packed with live cultures.</p>
+                    <div class="price">$4.75</div>
+                    <button class="add-to-cart" onclick="addToCart('Greek Yogurt', 4.75)">Add to Cart</button>
                 </div>
             </div>
 
             <div class="product-card">
                 <img src="" alt="Cultured Butter">
                 <div class="product-info">
-                    <h3>Cultured European-Style Butter</h3>
-                    <p>High butterfat content, slow-churned for the perfect spread.</p>
-                    <div class="price">$7.00</div>
-                    <button class="add-to-cart" onclick="addToCart('Cultured Butter')">Add to Cart</button>
+                    <h3>Cultured Barrel-Churned Butter</h3>
+                    <p>European-style, high-fat butter. Perfect for baking.</p>
+                    <div class="price">$8.50</div>
+                    <button class="add-to-cart" onclick="addToCart('Cultured Butter', 8.50)">Add to Cart</button>
                 </div>
             </div>
 
             </div>
         
-        <div style="text-align: center; margin-top: 30px;">
-            <a href="payment.html" class="add-to-cart" style="background-color: var(--primary-color); color: white; text-decoration: none;">Proceed to Checkout (0 Items)</a>
+        <div class="checkout-bar">
+            <a href="payment.html" id="checkout-link">View Cart (0 Items)</a>
         </div>
         
     </div>
 
     <footer>
-        <p>&copy; 2025 Willow Creek Dairy. Freshness Guaranteed.</p>
+        <p>&copy; 2025 Willow Creek Dairy. Excellence in Dairy.</p>
     </footer>
 
     <script>
-        // Simple client-side cart simulation
-        let cart = [];
+        // Simple client-side cart management using localStorage
+        let productPrices = {
+            'Whole Milk': 5.99,
+            'Cheddar Cheese': 14.99,
+            'Greek Yogurt': 4.75,
+            'Cultured Butter': 8.50
+        };
 
-        function addToCart(productName) {
-            cart.push(productName);
-            updateCartDisplay();
-            alert(productName + " added to cart!");
+        function getCart() {
+            try {
+                const storedCart = localStorage.getItem('dairy_cart');
+                return storedCart ? JSON.parse(storedCart) : [];
+            } catch (e) {
+                console.error("Error retrieving cart:", e);
+                return [];
+            }
         }
 
-        function updateCartDisplay() {
-            const checkoutLink = document.querySelector('a[href="payment.html"]');
-            checkoutLink.textContent = `Proceed to Checkout (${cart.length} Items)`;
-            // In a real app, you would save 'cart' to localStorage or a session.
-            // For this simulation, we'll store it globally for the next page.
+        function saveCart(cart) {
             localStorage.setItem('dairy_cart', JSON.stringify(cart));
+            updateCartDisplay(cart);
         }
 
-        // Initialize cart on load (optional)
-        updateCartDisplay();
+        function addToCart(productName, price) {
+            let cart = getCart();
+            const existingItem = cart.find(item => item.name === productName);
+            
+            if (existingItem) {
+                existingItem.quantity += 1;
+            } else {
+                cart.push({ name: productName, price: price, quantity: 1 });
+            }
+            
+            saveCart(cart);
+            alert(`${productName} added to cart! Current items: ${cart.reduce((sum, item) => sum + item.quantity, 0)}`);
+        }
+
+        function updateCartDisplay(cart) {
+            const totalQuantity = cart.reduce((sum, item) => sum + item.quantity, 0);
+            const checkoutLink = document.getElementById('checkout-link');
+            checkoutLink.textContent = `View Cart (${totalQuantity} Items)`;
+        }
+
+        // Initialize cart display on load
+        updateCartDisplay(getCart());
     </script>
 </body>
 </html>
